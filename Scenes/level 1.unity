@@ -1146,6 +1146,7 @@ MonoBehaviour:
   balloon: {fileID: 701129585}
   balloonOrigPos: {fileID: 1987609888}
   theRopeConnect: {fileID: 41388352}
+  balloonAnim: {fileID: 701129593}
 --- !u!4 &602395023
 Transform:
   m_ObjectHideFlags: 0
@@ -1551,6 +1552,12 @@ GameObject:
 --- !u!50 &701129586 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5491276814677744399, guid: b8047ebbf7af846499dc71dab74306f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5491276813940186015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &701129593 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6998691241822951110, guid: b8047ebbf7af846499dc71dab74306f0,
     type: 3}
   m_PrefabInstance: {fileID: 5491276813940186015}
   m_PrefabAsset: {fileID: 0}
@@ -4254,6 +4261,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Crate
       objectReference: {fileID: 0}
+    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.6500745
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.013892174
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_Anchor.x
+      value: -0.012891769
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_Anchor.y
+      value: 0.3278513
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491276814677744399, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5491276814656272244, guid: b8047ebbf7af846499dc71dab74306f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4324,31 +4356,6 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: -0.02133751
       objectReference: {fileID: 0}
-    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.6500745
-      objectReference: {fileID: 0}
-    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.013892174
-      objectReference: {fileID: 0}
-    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
-        type: 3}
-      propertyPath: m_Anchor.x
-      value: -0.012891769
-      objectReference: {fileID: 0}
-    - target: {fileID: 5491276814164248893, guid: b8047ebbf7af846499dc71dab74306f0,
-        type: 3}
-      propertyPath: m_Anchor.y
-      value: 0.3278513
-      objectReference: {fileID: 0}
-    - target: {fileID: 5491276814677744399, guid: b8047ebbf7af846499dc71dab74306f0,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5491276814677744398, guid: b8047ebbf7af846499dc71dab74306f0,
         type: 3}
       propertyPath: ropeRb
@@ -4374,7 +4381,23 @@ PrefabInstance:
       propertyPath: m_Anchor.x
       value: -0.0010004044
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6998691241822951110, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998691241822951110, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998691241822951110, guid: b8047ebbf7af846499dc71dab74306f0,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8526652861217600959, guid: b8047ebbf7af846499dc71dab74306f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b8047ebbf7af846499dc71dab74306f0, type: 3}
 --- !u!1001 &6387422942258632934
 PrefabInstance:

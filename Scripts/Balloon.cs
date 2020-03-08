@@ -47,6 +47,12 @@ public class Balloon : MonoBehaviour
         }
     }
 
+    public void ResetBalloon()
+    {
+        theLM.BalloonAnimation();
+        balloonHinge.connectedBody = ropeRb;
+    }
+
     void Pop()
     {
         hasPop = true;

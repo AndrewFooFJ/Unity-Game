@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 5491276814164248891}
   - component: {fileID: 5491276814164248892}
   - component: {fileID: 5491276814164248893}
+  - component: {fileID: 8526652861217600959}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -394,7 +395,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 5491276814677744399}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0.32999992}
   m_ConnectedAnchor: {x: -0.0010000002, y: -0.6489999}
   m_UseMotor: 0
@@ -405,6 +406,19 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &8526652861217600959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491276814164248894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1582f685b3b2841b758c72aed210ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balloonRb: {fileID: 5491276814677744399}
 --- !u!1 &5491276814656272245
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +480,7 @@ GameObject:
   - component: {fileID: 5491276814677744397}
   - component: {fileID: 7995834761618719826}
   - component: {fileID: 7463778916300569370}
+  - component: {fileID: 6998691241822951110}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -481,7 +496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5491276814677744402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.012, y: -3.906, z: 14.575635}
+  m_LocalPosition: {x: 0.012, y: -3.906, z: 14.57563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5491276814656272244}
@@ -570,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41ba87380a3b5d48967725d178f8b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ropeRb: {fileID: 5491276814164248892}
   speed: 3
   balloonExplosion: {fileID: 5439389590822389414, guid: bb474e8b39f9a104ca52ce3fdf3d2974,
     type: 3}
@@ -620,9 +636,9 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 5491276814164248892}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: -0.6650002}
-  m_ConnectedAnchor: {x: 0.0010000002, y: 0.29799938}
+  m_ConnectedAnchor: {x: 0, y: 0.2}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -631,6 +647,25 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!95 &6998691241822951110
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491276814677744402}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9dff1e444d777f45ac16e14bfb200bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6428356974850826763
 GameObject:
   m_ObjectHideFlags: 0

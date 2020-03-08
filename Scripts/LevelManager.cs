@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour
     public GameObject balloon;
     public Transform balloonOrigPos;
     public HingeJoint2D theRopeConnect;
+    public Animator balloonAnim;
     Balloon balloonScript;
 
     WindSwipe playerSwipe;
@@ -209,16 +210,21 @@ public class LevelManager : MonoBehaviour
 
     public void ResetGame()
     {
-        //balloonScript.hasPop = false;
-        runGame = true;
-        balloonScript.hasPop = false;
-        theCam.followPlayer = true;
         balloon.SetActive(true);
-        balloon.transform.position = balloonOrigPos.position;
+        balloonAnim.SetTrigger("ResetBalloon");
+        runGame = true;
+        theCam.followPlayer = true;
         starsHolder.SetActive(true);
         gameIsLost = false;
-        theRopeConnect.connectedAnchor = new Vector2(0.001000404f, 0.2980003f);
         loseScreen.SetActive(false);
+    }
+
+    public void BalloonAnimation()
+    {
+        balloonScript.hasPop = false;
+        //balloon.SetActive(true);
+        balloon.transform.position = balloonOrigPos.position;
+        theRopeConnect.connectedAnchor = new Vector2(0.001000404f, 0.2980003f);
     }
 
     public void WinGame()

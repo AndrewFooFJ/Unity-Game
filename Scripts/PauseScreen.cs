@@ -27,7 +27,7 @@ public class PauseScreen : MonoBehaviour
     public void ResumeGame()
     {
         pauseScreen.SetActive(false);
-        pauseButton.SetActive(true);
+       // pauseButton.SetActive(true);
         Time.timeScale = 1f; //resume game
     }
 

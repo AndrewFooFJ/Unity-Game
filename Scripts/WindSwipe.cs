@@ -35,7 +35,20 @@ public class WindSwipe : MonoBehaviour
     private void Start()
     {
         thePlayer = FindObjectOfType<PlayerForces>();
-        StartCoroutine(RunGame());
+    }
+
+    private void Update()
+    {
+        if (LevelManager.runGame == true)
+        {
+            ClearWind(); //clear wind vertex on trail
+            WindControls(); //wind controls
+            Debug.Log("player can move");
+        }
+        else
+        {
+            Debug.Log("player cant move");
+        }
     }
 
     #region Wind Create Functions
@@ -91,58 +104,29 @@ public class WindSwipe : MonoBehaviour
 
     void WindControls()
     {
+        //Debug.Log("it can do this 2");
+
         //only enable when there is 1 finger on screen
-        if (Input.touchCount == 1)
-        {
+        //if (Input.touchCount == 1)
+        //{
+            //Debug.Log("it can do this");
+
             //if mouse button is held down or player has place finger on screen, also if canPush is true
-            if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && losesGame == false)
+            if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && !LevelManager.gameIsLost)
             {
                 hasSwipe = false;
                 CreateWind(); //just creates a ribbon of the trail renderer
+                Debug.Log("Player can swipe");
             }
-            else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && losesGame == false)
+            else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && !LevelManager.gameIsLost)
             {
                 hasSwipe = true;
+            } else
+            {
+                Debug.Log("player cant swipe");
             }
-        }
+        //}
     }
         #endregion
-
-    #region Wind Power Check Functions
-        /*void CheckWindPower()
-        {
-            if (windPower <= 0)
-            {
-                windPower = 0;
-                //canPush = false;
-            }
-            else if (windPower > 100)
-            {
-                windPower = 100;
-            }
-        }
-
-        void RechargeWindPower()
-        {
-            //check if recharge time is more than 0
-            if (rechargeTime > 0) //&& canPush == false)
-            {
-                //count down recharge time and add wind Power at the process
-                rechargeTime -= Time.deltaTime;
-                windPower += 1;
-            }
-        }*/
-        #endregion
-
-        IEnumerator RunGame()
-        {
-            while (LevelManager.runGame == true)
-            {
-                ClearWind(); //clear wind vertex on trail
-                WindControls(); //wind controls
-
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
-        }
-    }
+ }
 

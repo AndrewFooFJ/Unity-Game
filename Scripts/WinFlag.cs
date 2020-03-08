@@ -19,7 +19,7 @@ public class WinFlag : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (!theLM.gameIsLost)
+            if (!LevelManager.gameIsLost)
             {
                 WinGame();
             }

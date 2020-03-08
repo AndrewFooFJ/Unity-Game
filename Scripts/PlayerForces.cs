@@ -63,10 +63,14 @@ public class PlayerForces : MonoBehaviour
         if (!theBalloon.hasPop)
         {
             playerRb.velocity = new Vector2(forceMultiplyer * direction.x, forceMultiplyer * direction.y);
+
+            Debug.Log("Balloon is following player commands");
         }
         else if (theBalloon.hasPop)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, playerRb.velocity.y);
+
+            Debug.Log("Balloon is not following player commands");
         }
     }
 

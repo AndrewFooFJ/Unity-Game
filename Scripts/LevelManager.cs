@@ -34,13 +34,19 @@ public class LevelManager : MonoBehaviour
     [Header("Screens")]
     public GameObject winScreen;
     public GameObject loseScreen;
-    public bool gameIsLost = false;
+    public static bool gameIsLost = false;
 
     [Header("Stars Variables")]
     public static int totalStarCount;
     public GameObject starsHolder;
     public int maxStars;
     public int starCount;
+
+    [Header("Balloon Variable")]
+    public GameObject balloon;
+    public Transform balloonOrigPos;
+    public HingeJoint2D theRopeConnect;
+    Balloon balloonScript;
 
     WindSwipe playerSwipe;
     CameraController theCam;
@@ -67,6 +73,7 @@ public class LevelManager : MonoBehaviour
         playerSwipe = FindObjectOfType<WindSwipe>();
         theStars = FindObjectOfType<StarScript>();
         theCam = FindObjectOfType<CameraController>();
+        balloonScript = FindObjectOfType<Balloon>();
 
         //by default, win and lose screens are set inactive at start
         winScreen.SetActive(false);
@@ -194,11 +201,24 @@ public class LevelManager : MonoBehaviour
     #region Screen and Changing Scene Functions
     public void LoseGame()
     {
-        gameIsLost = true;
-        loseScreen.SetActive(true);
-        playerSwipe.losesGame = true;
-        theCam.followPlayer = false;
-        starsHolder.SetActive(false);
+            gameIsLost = true;
+            loseScreen.SetActive(true);
+            theCam.followPlayer = false;
+            starsHolder.SetActive(false);
+    }
+
+    public void ResetGame()
+    {
+        //balloonScript.hasPop = false;
+        runGame = true;
+        balloonScript.hasPop = false;
+        theCam.followPlayer = true;
+        balloon.SetActive(true);
+        balloon.transform.position = balloonOrigPos.position;
+        starsHolder.SetActive(true);
+        gameIsLost = false;
+        theRopeConnect.connectedAnchor = new Vector2(0.001000404f, 0.2980003f);
+        loseScreen.SetActive(false);
     }
 
     public void WinGame()

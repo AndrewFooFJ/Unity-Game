@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     public Sprite nullStar;
 
     [Header("Lives System Variables")]
-    public static int liveCount = 2;
+    public static int liveCount = 0;
     public Text liveCountText;
 
     [Header("PlayerPrefs Variables")]
@@ -53,6 +53,7 @@ public class LevelManager : MonoBehaviour
     public Animator balloonAnim;
     Balloon balloonScript;
 
+    AdController theAdsController;
     WindSwipe playerSwipe;
     CameraController theCam;
     StarScript theStars;
@@ -75,6 +76,7 @@ public class LevelManager : MonoBehaviour
 
         PlayerPrefs.GetInt(highScore); //get the max stars count for this level
 
+        theAdsController = FindObjectOfType<AdController>();
         playerSwipe = FindObjectOfType<WindSwipe>();
         theStars = FindObjectOfType<StarScript>();
         theCam = FindObjectOfType<CameraController>();
@@ -229,7 +231,7 @@ public class LevelManager : MonoBehaviour
         } else
         {
             //watch Ad
-            Debug.Log("Watch ad to give more lives");
+            theAdsController.PlayRewardedVideo();
         }
     }
 

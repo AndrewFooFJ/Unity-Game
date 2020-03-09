@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
     public GameObject balloon;
     public Transform balloonOrigPos;
     public HingeJoint2D theRopeConnect;
-    public Animator balloonAnim;
+    //public Animator balloonAnim;
     Balloon balloonScript;
 
     AdController theAdsController;
@@ -61,6 +61,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+       // AssignVariables();
         runGame = true;
         turnOnEffects = true;
         //gameIsRunning = true;
@@ -106,6 +107,19 @@ public class LevelManager : MonoBehaviour
     {
         stars += nameOfLevel + " Stars";
         highScore += "Highscore of " + nameOfLevel;
+    }
+
+    void AssignVariables()
+    {
+        star1 = GameObject.Find("Star1").GetComponent<Image>();
+        star2 = GameObject.Find("Star2").GetComponent<Image>();
+        star3 = GameObject.Find("Star3").GetComponent<Image>();
+
+        star1Win = GameObject.Find("Star1 (Win)").GetComponent<Image>();
+        star2Win = GameObject.Find("Star2 (Win)").GetComponent<Image>();
+        star3Win = GameObject.Find("Star3 (Win)").GetComponent<Image>();
+
+        liveCountText = GameObject.Find("LiveCountText").GetComponent<Text>();
     }
     #endregion
 
@@ -222,7 +236,7 @@ public class LevelManager : MonoBehaviour
         {
             liveCount -= 1;
             balloon.SetActive(true);
-            balloonAnim.SetTrigger("ResetBalloon");
+            balloon.GetComponent<Animator>().SetTrigger("ResetBalloon");
             runGame = true;
             theCam.followPlayer = true;
             starsHolder.SetActive(true);

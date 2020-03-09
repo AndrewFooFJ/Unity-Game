@@ -16,8 +16,11 @@ public class MovableWall : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
 
-        StartCoroutine(RunGame());
+    private void Update()
+    {
+        CheckMovementType();
     }
 
     void MovementHorizontal()
@@ -80,17 +83,5 @@ public class MovableWall : MonoBehaviour
     void MovementDirection(float xMove, float yMove)
     {
         rb.velocity = new Vector2(xMove, yMove);
-    }
-
-    IEnumerator RunGame()
-    {
-        while(LevelManager.runGame == true)
-        {
-            CheckMovementType();
-
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-
-        MovementDirection(0, 0);
     }
 }

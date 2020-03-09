@@ -17,6 +17,10 @@ public class LevelManager : MonoBehaviour
     public Sprite yellowStar;
     public Sprite nullStar;
 
+    [Header("Lives System Variables")]
+    public static int liveCount = 2;
+    public Text liveCountText;
+
     [Header("PlayerPrefs Variables")]
     public string nameOfLevel;
     string stars;
@@ -84,6 +88,8 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         UpdateStars();
+
+        liveCountText.text = "Lives: " + liveCount;
     }
 
     #region Audio Functions
@@ -210,13 +216,21 @@ public class LevelManager : MonoBehaviour
 
     public void ResetGame()
     {
-        balloon.SetActive(true);
-        balloonAnim.SetTrigger("ResetBalloon");
-        runGame = true;
-        theCam.followPlayer = true;
-        starsHolder.SetActive(true);
-        gameIsLost = false;
-        loseScreen.SetActive(false);
+        if (liveCount > 0)
+        {
+            liveCount -= 1;
+            balloon.SetActive(true);
+            balloonAnim.SetTrigger("ResetBalloon");
+            runGame = true;
+            theCam.followPlayer = true;
+            starsHolder.SetActive(true);
+            gameIsLost = false;
+            loseScreen.SetActive(false);
+        } else
+        {
+            //watch Ad
+            Debug.Log("Watch ad to give more lives");
+        }
     }
 
     public void BalloonAnimation()

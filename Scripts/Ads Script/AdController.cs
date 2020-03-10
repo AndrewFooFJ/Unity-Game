@@ -22,7 +22,8 @@ public class AdController : MonoBehaviour
         if (Advertisement.IsReady(rewardedVideoId))
         {
             Advertisement.Show(rewardedVideoId);
-            LevelManager.liveCount++;
+            //InGamePurchases.inGameCurrency += 10;
+            LevelManager.liveCount += 2;
         }
     }
 }

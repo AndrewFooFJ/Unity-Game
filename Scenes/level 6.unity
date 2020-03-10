@@ -4231,19 +4231,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
-      propertyPath: balloon
+      propertyPath: star1
       value: 
-      objectReference: {fileID: 5491276813940186018}
+      objectReference: {fileID: 1292142320}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
-      propertyPath: balloonOrigPos
+      propertyPath: star2
       value: 
-      objectReference: {fileID: 5491276813940186017}
+      objectReference: {fileID: 1290720869}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
-      propertyPath: theRopeConnect
+      propertyPath: star3
       value: 
-      objectReference: {fileID: 5491276813940186016}
+      objectReference: {fileID: 389946383}
+    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
+        type: 3}
+      propertyPath: star1Win
+      value: 
+      objectReference: {fileID: 140397955}
+    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
+        type: 3}
+      propertyPath: star2Win
+      value: 
+      objectReference: {fileID: 140397954}
+    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
+        type: 3}
+      propertyPath: star3Win
+      value: 
+      objectReference: {fileID: 140397953}
+    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
+        type: 3}
+      propertyPath: liveCountText
+      value: 
+      objectReference: {fileID: 1491252317}
+    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
+        type: 3}
+      propertyPath: clappingSound
+      value: 
+      objectReference: {fileID: 850966430}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
       propertyPath: winScreen
@@ -4261,49 +4286,19 @@ PrefabInstance:
       objectReference: {fileID: 140397950}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
-      propertyPath: clappingSound
+      propertyPath: balloon
       value: 
-      objectReference: {fileID: 850966430}
+      objectReference: {fileID: 5491276813940186018}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
-      propertyPath: nameOfLevel
-      value: Level 6
-      objectReference: {fileID: 0}
+      propertyPath: balloonOrigPos
+      value: 
+      objectReference: {fileID: 5491276813940186017}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
-      propertyPath: liveCountText
+      propertyPath: theRopeConnect
       value: 
-      objectReference: {fileID: 1491252317}
-    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
-        type: 3}
-      propertyPath: star2Win
-      value: 
-      objectReference: {fileID: 140397954}
-    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
-        type: 3}
-      propertyPath: star3Win
-      value: 
-      objectReference: {fileID: 140397953}
-    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
-        type: 3}
-      propertyPath: star1Win
-      value: 
-      objectReference: {fileID: 140397955}
-    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
-        type: 3}
-      propertyPath: star1
-      value: 
-      objectReference: {fileID: 1292142320}
-    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
-        type: 3}
-      propertyPath: star2
-      value: 
-      objectReference: {fileID: 1290720869}
-    - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
-        type: 3}
-      propertyPath: star3
-      value: 
-      objectReference: {fileID: 389946383}
+      objectReference: {fileID: 5491276813940186016}
     - target: {fileID: 1421155401594883238, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7029,7 +7024,7 @@ PrefabInstance:
     - target: {fileID: 5491276814656272244, guid: b8047ebbf7af846499dc71dab74306f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.31
+      value: -4.27
       objectReference: {fileID: 0}
     - target: {fileID: 5491276814656272244, guid: b8047ebbf7af846499dc71dab74306f0,
         type: 3}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,14 +11,26 @@ public class MenuManager : MonoBehaviour
     public GameObject creditPage;
     public GameObject levelSelectScreen;
     public GameObject clearPlayerprefsScreen;
+    public GameObject storePage;
     public Animator loadingScreen;
+
+    [Header("Text Variables")]
+    public Text seedCountText;
+    public Text liveCountText;
 
     private void Start()
     {
         //close level select and Credit Page and open main menu by default
-        CloseLevelSelect(); 
-        CloseCreditPage(); 
+        /*CloseLevelSelect(); 
+        CloseCreditPage();*/
+        OpenStorePage();
         clearPlayerprefsScreen.SetActive(false);
+    }
+
+    private void Update()
+    {
+        seedCountText.text = "Seeds: " + InGamePurchases.inGameCurrency;
+        liveCountText.text = "Lives: " + LevelManager.liveCount;
     }
 
     public void StartGame()
@@ -26,11 +39,23 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    public void OpenStorePage()
+    {
+        mainMenu.SetActive(false);
+        storePage.SetActive(true);
+    }
+
     //opens level selection
     public void OpenLevelSelect()
     {
         mainMenu.SetActive(false);
         levelSelectScreen.SetActive(true);
+    }
+
+    public void CloseStorePage()
+    {
+        mainMenu.SetActive(true);
+        storePage.SetActive(false);
     }
 
     //closes level selection

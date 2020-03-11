@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour
     Vector2 distanceBtwFingers;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        player = GameObject.Find("Crate").transform;
+    }
     void Update()
     {
         if (followPlayer)

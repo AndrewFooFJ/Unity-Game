@@ -1227,7 +1227,7 @@ GameObject:
   - component: {fileID: 147945092}
   - component: {fileID: 147945091}
   m_Layer: 5
-  m_Name: SeedCountText
+  m_Name: PawCoinCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,8 +1533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: 166.2}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: 166.2}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177906730
 MonoBehaviour:
@@ -1567,7 +1567,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy 50 Lives (45 Seeds)
+  m_Text: Buy 50 Lives (45 Paw Coins)
 --- !u!222 &177906731
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2036,8 +2036,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: 45.8}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: 45.8}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245457492
 MonoBehaviour:
@@ -2070,7 +2070,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy 100 Lives (80 Seeds)
+  m_Text: Buy 100 Lives (80 Paw Coins)
 --- !u!222 &245457493
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3885,7 +3885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560747617}
   m_Layer: 5
-  m_Name: 10 Seeds
+  m_Name: 10 Paw Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4434,8 +4434,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: 277.18}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: 277.18}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &600628346
 MonoBehaviour:
@@ -4468,7 +4468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy 10 Lives (5 Seeds)
+  m_Text: Buy 10 Lives (5 Paw Coins)
 --- !u!222 &600628347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6380,8 +6380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: -194.1}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: -194.1}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &829058085
 MonoBehaviour:
@@ -6414,7 +6414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy 50 seeds ($0.50)
+  m_Text: Buy 50 Paw Coins ($0.50)
 --- !u!222 &829058086
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8225,8 +8225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: -76.5}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: -76.5}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1025052221
 MonoBehaviour:
@@ -8259,7 +8259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy 10 Seeds ($0.10)
+  m_Text: Buy 10 Paw Coins ($0.10)
 --- !u!222 &1025052222
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11239,8 +11239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: -317.4}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: -317.4}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1490624845
 MonoBehaviour:
@@ -11273,7 +11273,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy 100 Seeds ($0.99)
+  m_Text: Buy 100 Paw Coins ($0.99)
 --- !u!222 &1490624846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12484,7 +12484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645131229}
   m_Layer: 5
-  m_Name: 50 Seeds
+  m_Name: 50 Paw Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13638,7 +13638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902691015}
   m_Layer: 5
-  m_Name: 100 Seeds
+  m_Name: 100 Paw Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13928,8 +13928,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.9, y: 395}
-  m_SizeDelta: {x: 586.6, y: 55.4}
+  m_AnchoredPosition: {x: -408.7, y: 395}
+  m_SizeDelta: {x: 682.1, y: 55.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1947891503
 MonoBehaviour:

@@ -55,6 +55,5 @@ public class RectangleMovement : MonoBehaviour
         if (placementNodes >= 3)
         {
             placementNodes = 0;
-        }
-    }
+        }    }
 }

@@ -33,9 +33,12 @@ public class Balloon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        balloonRb.velocity = new Vector2(balloonRb.velocity.x, speed); //fly up for now
+        if (LevelManager.runGame)
+        {
+            balloonRb.velocity = new Vector2(balloonRb.velocity.x, speed); //fly up for now
 
-        balloonHinge.connectedBody = ropeRb;
+            balloonHinge.connectedBody = ropeRb;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

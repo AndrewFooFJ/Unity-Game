@@ -13,6 +13,7 @@ public class DialogManager : MonoBehaviour
     [Header("Text and Gameobject Variables")]
     public Text dialogText;
     public GameObject tutorial;
+    public Animator drSpikyAnim;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
+        SwitchDialog();
+
         //this works
         if (Input.GetKey(KeyCode.S))
         {
@@ -31,9 +34,24 @@ public class DialogManager : MonoBehaviour
         }
     }
 
+    public void SwitchDialog()
+    {
+        switch (currentSentenceInt)
+        {
+            case 0:
+                drSpikyAnim.SetTrigger("StartTalk"); //dr spikey is talking
+                break;
+
+            case 1:
+                drSpikyAnim.SetTrigger("DoneTalking"); //dr spikey is not talking
+                break;
+        }
+    }
+
     public void StartDialogue()
     {
         dialogText.text = sentences[currentSentenceInt];
+        LevelManager.runGame = false;
         StartCoroutine(TypeSentence(sentences));
     }
 
@@ -64,6 +82,7 @@ public class DialogManager : MonoBehaviour
 
     public void EndDialog()
     {
+        LevelManager.runGame = true;
         tutorial.SetActive(false);
     }
 }

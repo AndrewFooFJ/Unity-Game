@@ -8,12 +8,15 @@ public class DialogManager : MonoBehaviour
     [Header("Sentences Variables")]
     [TextArea(3, 10)]
     public string[] sentences;
-    int currentSentenceInt;
+    [SerializeField]private int currentSentenceInt;
+    bool ableToContinue = false;
 
     [Header("Text and Gameobject Variables")]
     public Text dialogText;
     public GameObject tutorial;
     public Animator drSpikyAnim;
+    public Animator windMageAnim;
+    public GameObject continueButton;
 
     private void Start()
     {
@@ -22,6 +25,14 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
+        if (ableToContinue == true)
+        {
+            continueButton.SetActive(true);
+        } else
+        {
+            continueButton.SetActive(false);
+        }
+
         SwitchDialog();
 
         //this works
@@ -39,11 +50,15 @@ public class DialogManager : MonoBehaviour
         switch (currentSentenceInt)
         {
             case 0:
-                drSpikyAnim.SetTrigger("StartTalk"); //dr spikey is talking
+                windMageAnim.SetBool("Talking", true); //Wind Mage is talking
                 break;
 
             case 1:
-                drSpikyAnim.SetTrigger("DoneTalking"); //dr spikey is not talking
+                StartCoroutine(DrSpikeyTalk());
+                break;
+
+            case 2:
+                StartCoroutine(WindMageTalk());
                 break;
         }
     }
@@ -61,6 +76,7 @@ public class DialogManager : MonoBehaviour
         //check if the current Sentence Int is less than amt of arrays needed, if so play 1 more sentence
         if (currentSentenceInt < 2)
         {
+            //StartCoroutine(TypeSentence(sentences));
             dialogText.text = sentences[currentSentenceInt += 1];
             StartCoroutine(TypeSentence(sentences));
         } else
@@ -72,12 +88,34 @@ public class DialogManager : MonoBehaviour
     //type the sentence words 
     IEnumerator TypeSentence(string[] sentence)
     {
+        ableToContinue = false;
+
         dialogText.text = "";
         foreach (char letter in sentence[currentSentenceInt].ToCharArray())
         {
             dialogText.text += letter;
             yield return null;
         }
+
+        ableToContinue = true;
+    }
+
+    IEnumerator WindMageTalk()
+    {
+        drSpikyAnim.SetBool("Talking", false); //dr spikey is talking
+
+        yield return new WaitForSeconds(Time.deltaTime);
+
+        windMageAnim.SetBool("Talking", true); //Wind Mage is talking
+    }
+
+    IEnumerator DrSpikeyTalk()
+    {
+        windMageAnim.SetBool("Talking", false); //Wind Mage is talking
+
+        yield return new WaitForSeconds(Time.deltaTime);
+
+        drSpikyAnim.SetBool("Talking", true); //Dr Spikey is talking
     }
 
     public void EndDialog()

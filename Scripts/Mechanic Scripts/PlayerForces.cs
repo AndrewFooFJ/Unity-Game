@@ -78,22 +78,22 @@ public class PlayerForces : MonoBehaviour
     public void CalculateMouseDrag()
     {
         //only enable when there is 1 finger on screen
-        //if (Input.touchCount == 1)
-        
+        if (Input.touchCount == 1)
+        {
             //when mouse button is pressed down
-            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))) //&& theWind.canPush == true)
+            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))) 
             {
                 startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
 
             //when mouse button is pressed up
-            else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)))// && theWind.canPush == true)
+            else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)))
             {
                 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
 
-
             direction = endPos - startPos; //find the dist between end and start positions
+        }
         
     }
 

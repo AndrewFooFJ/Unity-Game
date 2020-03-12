@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 208504071}
   m_Layer: 0
   m_Name: Right Transform
-  m_TagString: Untagged
+  m_TagString: MovingSpikes
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1907,7 +1907,7 @@ GameObject:
   - component: {fileID: 1742789390}
   m_Layer: 0
   m_Name: Left Transform
-  m_TagString: Untagged
+  m_TagString: MovingSpikes
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3094,8 +3094,8 @@ GameObject:
   - component: {fileID: 7128126237762551122}
   - component: {fileID: 7128126237762551121}
   - component: {fileID: 7128126237762551120}
-  - component: {fileID: 7128126237762551136}
   - component: {fileID: 7128126237762551137}
+  - component: {fileID: 7128126237762551136}
   m_Layer: 0
   m_Name: Rotating Spikes
   m_TagString: Untagged
@@ -3118,7 +3118,7 @@ MonoBehaviour:
   leftTransform: {fileID: 1742789390}
   rightTransform: {fileID: 208504071}
   movingHorizontal: 1
-  speed: 0.5
+  speed: 1
 --- !u!50 &7128126237762551137
 Rigidbody2D:
   serializedVersion: 4

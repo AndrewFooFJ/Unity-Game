@@ -8,6 +8,7 @@ public class MovableWall : MonoBehaviour
     public Transform rightTransform;
 
     public bool movingHorizontal = true;
+
     bool hasMoved = false;
 
     Rigidbody2D rb;
@@ -49,7 +50,7 @@ public class MovableWall : MonoBehaviour
     {
         if (hasMoved == false)
         {
-            MovementDirection(0, speed);
+            MovementDirection(0, 0);
         }
 
         if (transform.position.y >= leftTransform.position.y)
@@ -66,6 +67,44 @@ public class MovableWall : MonoBehaviour
             hasMoved = true;
         }
     }
+
+    /*void MoveRectangle()
+    {
+        bool movingOnFirst = true;
+
+        if (hasMoved == false)
+        {
+            MovementDirection(speed, 0);
+        }
+
+        if (transform.position.y <= leftTransform.position.y && movingOnFirst == false)
+        {
+            MovementDirection(speed, 0);
+            hasMoved = true;
+            movingOnFirst = true; //because u are on first line now
+        }
+
+        if (transform.position.x >= rightTransform.position.x && movingOnFirst == true)
+        {
+            MovementDirection(0, -speed);
+            hasMoved = true;
+            movingOnFirst = false; //because u are now going on second line now
+        }
+
+        if (transform.position.y <= rightDownTransform.position.y && movingOnFirst == false)
+        {
+            MovementDirection(-speed, 0);
+            hasMoved = true;
+            movingOnFirst = false; //because u are now going on second line now
+        }
+
+        if (transform.position.x >= leftDownTransform.position.x && movingOnFirst == false)
+        {
+            MovementDirection(0, speed);
+            hasMoved = true;
+            movingOnFirst = true; //because u are on first line now
+        }
+    }*/
 
     void CheckMovementType()
     {

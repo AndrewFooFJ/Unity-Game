@@ -6,11 +6,6 @@ public class RotatingSpikes : MonoBehaviour
 {
     public float rotatingSpeed;
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         Rotate();

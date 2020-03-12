@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7638449417424207264}
+  - component: {fileID: 4991651386888130613}
   m_Layer: 0
   m_Name: Spike Wall Plus ClockWise
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659395357220147875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.224, y: -4.216, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 5101413266762354200}
@@ -35,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4991651386888130613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659395357220147875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abf9f9dd3c66844db9ed401bad5cb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotatingSpeed: 1
 --- !u!1001 &3905802286665792370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50,12 +64,12 @@ PrefabInstance:
     - target: {fileID: 4822074974944389884, guid: 83458421f4bfc3e49bb69d16b43232ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9704618
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822074974944389884, guid: 83458421f4bfc3e49bb69d16b43232ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9813967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4822074974944389884, guid: 83458421f4bfc3e49bb69d16b43232ef,
         type: 3}
@@ -140,12 +154,12 @@ PrefabInstance:
     - target: {fileID: 7668323578333330420, guid: f795b989fb4b66b47ac1d51eae1ca58b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9780002
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 7668323578333330420, guid: f795b989fb4b66b47ac1d51eae1ca58b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.07
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7668323578333330420, guid: f795b989fb4b66b47ac1d51eae1ca58b,
         type: 3}
@@ -230,12 +244,12 @@ PrefabInstance:
     - target: {fileID: 5782156184693835173, guid: c21e1b7018d32674caa9bb01fb3bb076,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.012
+      value: -1.04
       objectReference: {fileID: 0}
     - target: {fileID: 5782156184693835173, guid: c21e1b7018d32674caa9bb01fb3bb076,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.02
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 5782156184693835173, guid: c21e1b7018d32674caa9bb01fb3bb076,
         type: 3}
@@ -320,12 +334,12 @@ PrefabInstance:
     - target: {fileID: 1927940645609295576, guid: 8a0824d7ef707624a84f2df6da305fe6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.98
       objectReference: {fileID: 0}
     - target: {fileID: 1927940645609295576, guid: 8a0824d7ef707624a84f2df6da305fe6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0479994
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 1927940645609295576, guid: 8a0824d7ef707624a84f2df6da305fe6,
         type: 3}
@@ -402,20 +416,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7638449417424207264}
     m_Modifications:
-    - target: {fileID: 4401883437121406644, guid: f938506d7ff437d448f737aa8846ac32,
-        type: 3}
-      propertyPath: m_Name
-      value: AnimalBrezEmHome_SpikeBottom
-      objectReference: {fileID: 0}
     - target: {fileID: 4551073439491589745, guid: f938506d7ff437d448f737aa8846ac32,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.96
+      value: -3.058
       objectReference: {fileID: 0}
     - target: {fileID: 4551073439491589745, guid: f938506d7ff437d448f737aa8846ac32,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.009
       objectReference: {fileID: 0}
     - target: {fileID: 4551073439491589745, guid: f938506d7ff437d448f737aa8846ac32,
         type: 3}
@@ -476,6 +485,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401883437121406644, guid: f938506d7ff437d448f737aa8846ac32,
+        type: 3}
+      propertyPath: m_Name
+      value: AnimalBrezEmHome_SpikeBottom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f938506d7ff437d448f737aa8846ac32, type: 3}

@@ -1,0 +1,439 @@
+fileFormatVersion: 2
+guid: e352e6f84f2d8a245857566ab4ef4734
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7522434855536124940
+    second: AnimalBrezEmHome_SpikeCanonRight_0
+  - first:
+      213: -1392712677818802642
+    second: AnimalBrezEmHome_SpikeCanonRight_1
+  - first:
+      213: -2320112397322384331
+    second: AnimalBrezEmHome_SpikeCanonRight_2
+  - first:
+      213: -4883089973456326413
+    second: AnimalBrezEmHome_SpikeCanonRight_3
+  - first:
+      213: -7309307513240565246
+    second: AnimalBrezEmHome_SpikeCanonRight_4
+  - first:
+      213: -1900144317492523401
+    second: AnimalBrezEmHome_SpikeCanonRight_5
+  - first:
+      213: -3233157861050647237
+    second: AnimalBrezEmHome_SpikeCanonRight_6
+  - first:
+      213: 7048815305812439092
+    second: AnimalBrezEmHome_SpikeCanonRight_7
+  - first:
+      213: 6363018914266836326
+    second: AnimalBrezEmHome_SpikeCanonRight_8
+  - first:
+      213: -6150434018657000230
+    second: AnimalBrezEmHome_SpikeCanonRight_9
+  - first:
+      213: -3686251208581089514
+    second: AnimalBrezEmHome_SpikeCanonRight_10
+  - first:
+      213: 1439521111724102345
+    second: AnimalBrezEmHome_SpikeCanonRight_11
+  - first:
+      213: 7822626377592144880
+    second: AnimalBrezEmHome_SpikeCanonRight_12
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15c4409042946947a3c814dba4f3e99
+      internalID: 7522434855536124940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_1
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93213e8f6d80407449a9e016b9752c81
+      internalID: -1392712677818802642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_2
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91bce0940b7e9434a9243e631dd7fb7d
+      internalID: -2320112397322384331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_3
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a5f2e0591b62e4799728ce7173d76c
+      internalID: -4883089973456326413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_4
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaaa77b13abdd334688f4a0f0c2b3f37
+      internalID: -7309307513240565246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_5
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a95094628b102cf4c948d4b6223569e4
+      internalID: -1900144317492523401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_6
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5914e4fbeb3a0f64699ca54da0cc3ac2
+      internalID: -3233157861050647237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_7
+      rect:
+        serializedVersion: 2
+        x: 1715
+        y: 536
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec2c278ad3d9a24c80a6a8610c0fd7b
+      internalID: 7048815305812439092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c617d9db2ecd943ba9e5df472e48a2
+      internalID: 6363018914266836326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_9
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 48
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52696c6c8d467c949844a2b7447380ed
+      internalID: -6150434018657000230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_10
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 48
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14232402148b494896003748c859d40
+      internalID: -3686251208581089514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_11
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 48
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87099b2480d3ffb44b623bb699bfd94c
+      internalID: 1439521111724102345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimalBrezEmHome_SpikeCanonRight_12
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 48
+        width: 245
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607b345ef66d2424393cb454df986471
+      internalID: 7822626377592144880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

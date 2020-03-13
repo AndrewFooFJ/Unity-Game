@@ -77,11 +77,13 @@ public class PlayerForces : MonoBehaviour
     //this check the mouse is dragging in what direction
     public void CalculateMouseDrag()
     {
-        //only enable when there is 1 finger on screen
-        if (Input.touchCount == 1)
+        if (LevelManager.runGame)
         {
+            //only enable when there is 1 finger on screen
+            //if (Input.touchCount == 1)
+            //{
             //when mouse button is pressed down
-            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))) 
+            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
             {
                 startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
@@ -93,8 +95,9 @@ public class PlayerForces : MonoBehaviour
             }
 
             direction = endPos - startPos; //find the dist between end and start positions
+                                           //}
+
         }
-        
     }
 
     /*IEnumerator RunGame()

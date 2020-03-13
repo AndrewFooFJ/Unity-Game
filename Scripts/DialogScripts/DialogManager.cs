@@ -9,6 +9,7 @@ public class DialogManager : MonoBehaviour
     [TextArea(3, 10)]
     public string[] sentences;
     [SerializeField]private int currentSentenceInt;
+    public int numberOfSentences;
     bool ableToContinue = false;
 
     [Header("Text and Gameobject Variables")]
@@ -47,6 +48,12 @@ public class DialogManager : MonoBehaviour
 
     public void SwitchDialog()
     {
+        //use this for guidence
+        /*drSpikyAnim.SetBool("Talking", true); //Dr Spikey is talking (This is for start)
+        windMageAnim.SetBool("Talking", true); //Wind Mage is talking (This is for start)
+        StartCoroutine(DrSpikeyTalk()); //Dr Spikey is Talking 
+        StartCoroutine(WindMageTalk()); //Wind Mage is Talking  */
+
         switch (currentSentenceInt)
         {
             case 0:
@@ -59,6 +66,10 @@ public class DialogManager : MonoBehaviour
 
             case 2:
                 StartCoroutine(WindMageTalk());
+                break;
+
+            default:
+                EndDialog();
                 break;
         }
     }
@@ -74,7 +85,7 @@ public class DialogManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         //check if the current Sentence Int is less than amt of arrays needed, if so play 1 more sentence
-        if (currentSentenceInt < 2)
+        if (currentSentenceInt < numberOfSentences)
         {
             //StartCoroutine(TypeSentence(sentences));
             dialogText.text = sentences[currentSentenceInt += 1];

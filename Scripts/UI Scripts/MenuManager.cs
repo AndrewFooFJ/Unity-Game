@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public GameObject levelSelectScreen;
     public GameObject clearPlayerprefsScreen;
     public GameObject storePage;
+    public GameObject customisationScreen;
     public GameObject[] crateSelectionScreens;
 
     public Animator loadingScreen;
@@ -61,6 +62,12 @@ public class MenuManager : MonoBehaviour
         levelSelectScreen.SetActive(true);
     }
 
+    public void OpenCrateSelectionScreen()
+    {
+        mainMenu.SetActive(false);
+        customisationScreen.SetActive(true);
+    }
+
     public void OpenPage1()
     {
         PageSelectForCrates(crateSelectionScreens[0], crateSelectionScreens[1]);
@@ -85,6 +92,12 @@ public class MenuManager : MonoBehaviour
     {
         screenToOpen.SetActive(true);
         screenToClose.SetActive(false);
+    }
+
+    public void CloseCrateCustomisationScreen()
+    {
+        mainMenu.SetActive(true);
+        customisationScreen.SetActive(false);
     }
 
     public void CloseCrateSelection()

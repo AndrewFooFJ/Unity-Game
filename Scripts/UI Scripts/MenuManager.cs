@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
     public GameObject levelSelectScreen;
     public GameObject clearPlayerprefsScreen;
     public GameObject storePage;
+    public GameObject[] crateSelectionScreens;
+
     public Animator loadingScreen;
 
     [Header("Text Variables")]
@@ -23,7 +25,8 @@ public class MenuManager : MonoBehaviour
         //close level select and Credit Page and open main menu by default
         /*CloseLevelSelect(); 
         CloseCreditPage();*/
-        OpenStorePage();
+        //OpenCrateSelection();
+        //OpenStorePage();
         clearPlayerprefsScreen.SetActive(false);
     }
 
@@ -39,6 +42,12 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    public void OpenCrateSelection()
+    {
+        mainMenu.SetActive(false);
+        crateSelectionScreens[0].SetActive(true);
+    }
+
     public void OpenStorePage()
     {
         mainMenu.SetActive(false);
@@ -50,6 +59,42 @@ public class MenuManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         levelSelectScreen.SetActive(true);
+    }
+
+    public void OpenPage1()
+    {
+        PageSelectForCrates(crateSelectionScreens[0], crateSelectionScreens[1]);
+    }
+
+    public void OpenPage2()
+    {
+        PageSelectForCrates(crateSelectionScreens[1], crateSelectionScreens[0]);
+    }
+
+    public void OpenPage23()
+    {
+        PageSelectForCrates(crateSelectionScreens[1], crateSelectionScreens[2]);
+    }
+
+    public void OpenPage3()
+    {
+        PageSelectForCrates(crateSelectionScreens[2], crateSelectionScreens[1]);
+    }
+
+    void PageSelectForCrates(GameObject screenToOpen, GameObject screenToClose)
+    {
+        screenToOpen.SetActive(true);
+        screenToClose.SetActive(false);
+    }
+
+    public void CloseCrateSelection()
+    {
+        for (int p = 0; p <= 2; p++)
+        {
+            crateSelectionScreens[p].SetActive(false);
+        }
+
+        mainMenu.SetActive(true);
     }
 
     public void CloseStorePage()

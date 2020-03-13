@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     Vector3 touchPos;
 
     public bool followPlayer = true;
-    public Transform player;
+    public Transform[] player;
     float smoothTime = 1f;
     float velocity = 0f;
 
@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Crate").transform;
+        PlayerPrefs.GetInt("TypeOfCrate");
     }
     void Update()
     {
@@ -85,14 +85,28 @@ public class CameraController : MonoBehaviour
 
     public void FollowPlayer()
     {
-        transform.position = new Vector3(player.position.x, player.position.y, -10);
+        switch (PlayerPrefs.GetInt("TypeOfCrate"))
+        {
+            case 0:
+                transform.position = new Vector3(player[0].position.x, player[0].position.y, -10);
+                break;
+
+            case 1:
+                transform.position = new Vector3(player[1].position.x, player[1].position.y, -10);
+                break;
+
+            case 2:
+                transform.position = new Vector3(player[2].position.x, player[2].position.y, -10);
+                break;
+        }
+
     }
 
-    public void SmoothCamera()
+    /*public void SmoothCamera()
     {
         float newPosX = Mathf.SmoothDamp(transform.position.x, player.position.x, ref velocity, smoothTime);
         float newPosY = Mathf.SmoothDamp(transform.position.y, player.position.y, ref velocity, smoothTime);
 
         transform.position = new Vector3(newPosX, newPosY, -10); //follow player 
-    }
+    }*/
 }

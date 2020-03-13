@@ -50,8 +50,10 @@ public class LevelManager : MonoBehaviour
     public GameObject balloon;
     public Transform balloonOrigPos;
     public HingeJoint2D theRopeConnect;
-    //public Animator balloonAnim;
     Balloon balloonScript;
+
+    [Header("Crate Types Variables")]
+    public GameObject[] crates;
 
     AdController theAdsController;
     WindSwipe playerSwipe;
@@ -76,6 +78,7 @@ public class LevelManager : MonoBehaviour
         starCount = 0;
 
         PlayerPrefs.GetInt(highScore); //get the max stars count for this level
+        PlayerPrefs.GetInt("TypeOfCrate"); //get the type of crate selected
 
         theAdsController = FindObjectOfType<AdController>();
         playerSwipe = FindObjectOfType<WindSwipe>();
@@ -90,9 +93,34 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        SwitchCrate();
         UpdateStars();
 
         liveCountText.text = "Lives: " + liveCount;
+    }
+
+    public void SwitchCrate()
+    {
+        switch (PlayerPrefs.GetInt("TypeOfCrate"))
+        {
+            case 0:
+                crates[0].SetActive(true);
+                crates[1].SetActive(false);
+                crates[2].SetActive(false);
+                break;
+
+            case 1:
+                crates[0].SetActive(false);
+                crates[1].SetActive(true);
+                crates[2].SetActive(false);
+                break;
+
+            case 2:
+                crates[0].SetActive(false);
+                crates[1].SetActive(false);
+                crates[2].SetActive(true);
+                break;
+        }
     }
 
     #region Audio Functions

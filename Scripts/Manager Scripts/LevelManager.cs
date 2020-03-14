@@ -275,7 +275,7 @@ public class LevelManager : MonoBehaviour
 
     public void BalloonAnimation()
     {
-        balloonScript.hasPop = false;
+        balloon[PlayerPrefs.GetInt("TypeOfCrate")].GetComponent<Balloon>().hasPop = false;
         balloon[PlayerPrefs.GetInt("TypeOfCrate")].transform.position = balloonOrigPos[PlayerPrefs.GetInt("TypeOfCrate")].position;
         theRopeConnect[PlayerPrefs.GetInt("TypeOfCrate")].connectedAnchor = new Vector2(0.001000404f, 0.2980003f);
     }

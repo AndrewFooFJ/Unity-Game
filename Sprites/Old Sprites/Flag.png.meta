@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: 1805158079502305607
     second: Flag_0
-  - first:
-      213: -477789389410734736
-    second: Flag_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -119,31 +116,10 @@ TextureImporter:
       name: Flag_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 124
-        width: 392
-        height: 273
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 1, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2224bd629b352494491695cc8b153c2a
-      internalID: 1805158079502305607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flag_1
-      rect:
-        serializedVersion: 2
-        x: 182
-        y: 27
-        width: 85
-        height: 39
+        x: 55
+        y: 16
+        width: 390
+        height: 379
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49655ce1a708bb84b8735bcdc008b040
-      internalID: -477789389410734736
+      spriteID: 3ac7828281bb0194aba2e12117f4a9eb
+      internalID: 1805158079502305607
       vertices: []
       indices: 
       edges: []

@@ -29,11 +29,9 @@ public class LevelManager : MonoBehaviour
     [Header("Audio Source Variables")]
     public AudioSource clappingSound;
 
-    //public Text starCountText; //text for now
     [Header("Boolean Variables")]
     public static bool runGame = true;
     public bool turnOnEffects = true;
-    //public bool gameIsRunning = true;
 
     [Header("Screens")]
     public GameObject winScreen;
@@ -47,9 +45,9 @@ public class LevelManager : MonoBehaviour
     public int starCount;
 
     [Header("Balloon Variable")]
-    public GameObject balloon;
-    public Transform balloonOrigPos;
-    public HingeJoint2D theRopeConnect;
+    public GameObject[] balloon;
+    public Transform[] balloonOrigPos;
+    public HingeJoint2D[] theRopeConnect;
     Balloon balloonScript;
 
     [Header("Crate Types Variables")]
@@ -63,10 +61,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-       // AssignVariables();
         runGame = true;
         turnOnEffects = true;
-        //gameIsRunning = true;
     }
 
     // Start is called before the first frame update
@@ -263,8 +259,8 @@ public class LevelManager : MonoBehaviour
         if (liveCount > 0)
         {
             liveCount -= 1;
-            balloon.SetActive(true);
-            balloon.GetComponent<Animator>().SetTrigger("ResetBalloon");
+            balloon[PlayerPrefs.GetInt("TypeOfCrate")].SetActive(true);
+            balloon[PlayerPrefs.GetInt("TypeOfCrate")].GetComponent<Animator>().SetTrigger("ResetBalloon");
             runGame = true;
             theCam.followPlayer = true;
             starsHolder.SetActive(true);
@@ -280,9 +276,8 @@ public class LevelManager : MonoBehaviour
     public void BalloonAnimation()
     {
         balloonScript.hasPop = false;
-        //balloon.SetActive(true);
-        balloon.transform.position = balloonOrigPos.position;
-        theRopeConnect.connectedAnchor = new Vector2(0.001000404f, 0.2980003f);
+        balloon[PlayerPrefs.GetInt("TypeOfCrate")].transform.position = balloonOrigPos[PlayerPrefs.GetInt("TypeOfCrate")].position;
+        theRopeConnect[PlayerPrefs.GetInt("TypeOfCrate")].connectedAnchor = new Vector2(0.001000404f, 0.2980003f);
     }
 
     public void WinGame()

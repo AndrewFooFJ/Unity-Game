@@ -378,7 +378,6 @@ GameObject:
   - component: {fileID: 9145498352187565209}
   - component: {fileID: 3429993300063799656}
   - component: {fileID: 7834160148939017607}
-  - component: {fileID: 1636460113065495290}
   m_Layer: 0
   m_Name: Rope (1)
   m_TagString: Untagged
@@ -494,19 +493,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!114 &1636460113065495290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3459583809941673944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1582f685b3b2841b758c72aed210ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balloonRb: {fileID: 972742040303038825}
 --- !u!1 &3646291787507715647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1301,6 @@ GameObject:
   - component: {fileID: 5491276814164248891}
   - component: {fileID: 5491276814164248892}
   - component: {fileID: 5491276814164248893}
-  - component: {fileID: 41388355}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -1431,19 +1416,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!114 &41388355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5491276814164248894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1582f685b3b2841b758c72aed210ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balloonRb: {fileID: 5491276814677744399}
 --- !u!1 &5491276814656272245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,7 +1759,6 @@ GameObject:
   - component: {fileID: 6359575464283268681}
   - component: {fileID: 7799128755869973378}
   - component: {fileID: 9025212106734602711}
-  - component: {fileID: 6942976408302615072}
   m_Layer: 0
   m_Name: Rope (2)
   m_TagString: Untagged
@@ -1903,19 +1874,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!114 &6942976408302615072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6687022720707452439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1582f685b3b2841b758c72aed210ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balloonRb: {fileID: 6829823091789922491}
 --- !u!1 &6899330296736444779
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,13 +60,13 @@ public class PlayerForces : MonoBehaviour
     public void PlayerMovement()
     {
         //check if the balloon has pop, in order for the crate to act normally, rather than having to float in mid air
-        if (!theBalloon.hasPop)
+        if (!theBalloon.hasPop || LevelManager.runGame == true)
         {
             playerRb.velocity = new Vector2(forceMultiplyer * direction.x, forceMultiplyer * direction.y);
 
             Debug.Log("Balloon is following player commands");
         }
-        else if (theBalloon.hasPop)
+        else if (theBalloon.hasPop || !LevelManager.runGame)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, playerRb.velocity.y);
 
@@ -80,8 +80,10 @@ public class PlayerForces : MonoBehaviour
         //only enable when there is 1 finger on screen
         //if (Input.touchCount == 1)
         //{
+        if (LevelManager.runGame == true)
+        {
             //when mouse button is pressed down
-            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))) 
+            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
             {
                 startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
@@ -93,6 +95,7 @@ public class PlayerForces : MonoBehaviour
             }
 
             direction = endPos - startPos; //find the dist between end and start positions
+        }
        // }
         
     }

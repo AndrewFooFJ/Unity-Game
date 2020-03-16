@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8f4703a25ed142f419dc619286416b71
+guid: c45575e0c32bdc84f9bc79b91295bc12
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,8 @@ TrueTypeFontImporter:
   fontName: Animal Crates Fonts
   fontNames:
   - Animal Crates Fonts
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8f4703a25ed142f419dc619286416b71, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

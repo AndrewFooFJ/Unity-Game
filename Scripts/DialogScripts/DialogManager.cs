@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    public Dialogue[] dialogue;
+
     [Header("Sentences Variables")]
     [TextArea(3, 10)]
     public string[] sentences;
@@ -34,19 +36,10 @@ public class DialogManager : MonoBehaviour
             continueButton.SetActive(false);
         }
 
-        SwitchDialog();
-
-        //this works
-        if (Input.GetKey(KeyCode.S))
-        {
-            Time.timeScale = 0f;
-        } else if (Input.GetKey(KeyCode.A))
-        {
-            Time.timeScale = 1f;
-        }
+        //SwitchDialog();
     }
 
-    public void SwitchDialog()
+    /*public void SwitchDialog()
     {
         //use this for guidence
         /*drSpikyAnim.SetBool("Talking", true); //Dr Spikey is talking (This is for start)
@@ -54,7 +47,7 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(DrSpikeyTalk()); //Dr Spikey is Talking 
         StartCoroutine(WindMageTalk()); //Wind Mage is Talking  */
 
-        switch (currentSentenceInt)
+        /*switch (dialogue[0].toPlay)
         {
             case 0:
                 windMageAnim.SetBool("Talking", true); //Wind Mage is talking
@@ -72,7 +65,7 @@ public class DialogManager : MonoBehaviour
                 EndDialog();
                 break;
         }
-    }
+    }*/
 
     public void StartDialogue()
     {

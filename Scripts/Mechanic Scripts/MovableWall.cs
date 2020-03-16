@@ -50,7 +50,7 @@ public class MovableWall : MonoBehaviour
     {
         if (hasMoved == false)
         {
-            MovementDirection(0, 0);
+            MovementDirection(0, speed);
         }
 
         if (transform.position.y >= leftTransform.position.y)

@@ -105,9 +105,8 @@ MonoBehaviour:
   star1Win: {fileID: 0}
   star2Win: {fileID: 0}
   star3Win: {fileID: 0}
-  yellowStar: {fileID: -6131956280449123157, guid: a1607df4a35bab4438a20832e966da44,
-    type: 3}
-  nullStar: {fileID: 763215309304045441, guid: a1607df4a35bab4438a20832e966da44, type: 3}
+  yellowStar: {fileID: 21300000, guid: dd16c1f1b19b6d346a9baf1043f6ae24, type: 3}
+  nullStar: {fileID: 21300000, guid: 01940d0c7302e9d46b535c3cf09ba95c, type: 3}
   liveCountText: {fileID: 0}
   nameOfLevel: Level 6
   clappingSound: {fileID: 0}
@@ -117,9 +116,13 @@ MonoBehaviour:
   starsHolder: {fileID: 0}
   maxStars: 0
   starCount: 0
-  balloon: {fileID: 0}
-  balloonOrigPos: {fileID: 0}
-  theRopeConnect: {fileID: 0}
+  balloon:
+  - {fileID: 0}
+  balloonOrigPos:
+  - {fileID: 0}
+  theRopeConnect:
+  - {fileID: 0}
+  crates: []
 --- !u!1 &1421155400637801942
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,12 +235,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757370e75f78fbc489e7e2bc1cac1084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogue: []
   sentences:
   - 'Hello There, my name is Mr Wage, i like your cat do like Mocha too '
   - This is Mr Wage again, I like Mocha too hahahahah, woof
   - This is Mr Wage, I like Cats though
+  currentSentenceInt: 0
+  numberOfSentences: 0
   dialogText: {fileID: 0}
   tutorial: {fileID: 0}
+  drSpikyAnim: {fileID: 0}
+  windMageAnim: {fileID: 0}
+  continueButton: {fileID: 0}
 --- !u!1 &1421155401594883239
 GameObject:
   m_ObjectHideFlags: 0

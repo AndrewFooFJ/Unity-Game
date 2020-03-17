@@ -41,6 +41,7 @@ public class LevelSelection : MonoBehaviour
         UpdateLevels(9);
         UpdateLevels(10);
         UpdateLevels(11);
+        UpdateLevels(12);
 
         PlayerPrefsFunctions();
     }
@@ -76,6 +77,7 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.GetInt("Level 10 Stars", starsHighscore[9]);
         PlayerPrefs.GetInt("Level 11 Stars", starsHighscore[10]);
         PlayerPrefs.GetInt("Level 12 Stars", starsHighscore[11]);
+        PlayerPrefs.GetInt("Level 13 Stars", starsHighscore[12]);
 
         //check if less stars does not override the max stars collected for each level
         for (int levelNum = 1; levelNum <= 12; levelNum++)
@@ -96,6 +98,7 @@ public class LevelSelection : MonoBehaviour
         UpdateStars("Level 10 Stars", 9);
         UpdateStars("Level 11 Stars", 10);
         UpdateStars("Level 12 Stars", 11);
+        UpdateStars("Level 13 Stars", 11);
     }
     #endregion
 

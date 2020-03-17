@@ -43,11 +43,6 @@ public class WindSwipe : MonoBehaviour
         {
             ClearWind(); //clear wind vertex on trail
             WindControls(); //wind controls
-            Debug.Log("player can move");
-        }
-        else
-        {
-            Debug.Log("player cant move");
         }
     }
 
@@ -109,22 +104,18 @@ public class WindSwipe : MonoBehaviour
         //only enable when there is 1 finger on screen
         //if (Input.touchCount == 1)
         //{
-            //Debug.Log("it can do this");
+        //Debug.Log("it can do this");
 
-            //if mouse button is held down or player has place finger on screen, also if canPush is true
-            if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && !LevelManager.gameIsLost)
-            {
-                hasSwipe = false;
-                CreateWind(); //just creates a ribbon of the trail renderer
-                Debug.Log("Player can swipe");
-            }
-            else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && !LevelManager.gameIsLost)
-            {
-                hasSwipe = true;
-            } else
-            {
-                Debug.Log("player cant swipe");
-            }
+        //if mouse button is held down or player has place finger on screen, also if canPush is true
+        if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && !LevelManager.gameIsLost)
+        {
+            hasSwipe = false;
+            CreateWind(); //just creates a ribbon of the trail renderer
+        }
+        else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && !LevelManager.gameIsLost)
+        {
+            hasSwipe = true;
+        }
         //}
     }
         #endregion

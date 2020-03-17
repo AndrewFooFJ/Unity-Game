@@ -23,7 +23,10 @@ public class StarScript : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            CollectStars();
+            if (LevelManager.runGame)
+            {
+                CollectStars();
+            }
         }
     }
 

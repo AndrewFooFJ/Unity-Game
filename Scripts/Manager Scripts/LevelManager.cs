@@ -285,7 +285,8 @@ public class LevelManager : MonoBehaviour
         PlayAudioSource(clappingSound);
         winScreen.SetActive(true);
         starsHolder.SetActive(false);
-        Time.timeScale = 0f;
+        runGame = false;
+        //Time.timeScale = 0f;
     }
 
     public void RestartGame()

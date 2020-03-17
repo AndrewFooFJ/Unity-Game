@@ -35,6 +35,12 @@ public class LevelSelection : MonoBehaviour
         UpdateLevels(3);
         UpdateLevels(4);
         UpdateLevels(5);
+        UpdateLevels(6);
+        UpdateLevels(7);
+        UpdateLevels(8);
+        UpdateLevels(9);
+        UpdateLevels(10);
+        UpdateLevels(11);
 
         PlayerPrefsFunctions();
     }
@@ -64,9 +70,15 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.GetInt("Level 4 Stars", starsHighscore[3]);
         PlayerPrefs.GetInt("Level 5 Stars", starsHighscore[4]);
         PlayerPrefs.GetInt("Level 6 Stars", starsHighscore[5]);
+        PlayerPrefs.GetInt("Level 7 Stars", starsHighscore[6]);
+        PlayerPrefs.GetInt("Level 8 Stars", starsHighscore[7]);
+        PlayerPrefs.GetInt("Level 9 Stars", starsHighscore[8]);
+        PlayerPrefs.GetInt("Level 10 Stars", starsHighscore[9]);
+        PlayerPrefs.GetInt("Level 11 Stars", starsHighscore[10]);
+        PlayerPrefs.GetInt("Level 12 Stars", starsHighscore[11]);
 
         //check if less stars does not override the max stars collected for each level
-        for (int levelNum = 1; levelNum <= 6; levelNum++)
+        for (int levelNum = 1; levelNum <= 12; levelNum++)
         {
             CheckStarCount("Level " + levelNum + "Stars", "Max Level " + levelNum + " Stars");
         }
@@ -78,6 +90,12 @@ public class LevelSelection : MonoBehaviour
         UpdateStars("Level 4 Stars", 3);
         UpdateStars("Level 5 Stars", 4);
         UpdateStars("Level 6 Stars", 5);
+        UpdateStars("Level 7 Stars", 6);
+        UpdateStars("Level 8 Stars", 7);
+        UpdateStars("Level 9 Stars", 8);
+        UpdateStars("Level 10 Stars", 9);
+        UpdateStars("Level 11 Stars", 10);
+        UpdateStars("Level 12 Stars", 11);
     }
     #endregion
 

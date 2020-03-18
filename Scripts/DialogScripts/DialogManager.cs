@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    [Header("Place to put Dialogue Scriptable Object")]
     public Dialogues dialogues;
 
     [Header("Sentences Variables")]
-    [TextArea(3, 10)]
-    public string[] sentences;
-    [SerializeField]private int currentSentenceInt;
-    public int numberOfSentences;
+    int currentSentenceInt;
     bool ableToContinue = false;
 
     [Header("Text and Gameobject Variables")]
@@ -35,82 +33,71 @@ public class DialogManager : MonoBehaviour
         {
             continueButton.SetActive(false);
         }
-
-        //SwitchDialog();
     }
 
-    /*public void SwitchDialog()
+    public void SwitchAnims()
     {
-        //use this for guidence
-        /*drSpikyAnim.SetBool("Talking", true); //Dr Spikey is talking (This is for start)
-        windMageAnim.SetBool("Talking", true); //Wind Mage is talking (This is for start)
-        StartCoroutine(DrSpikeyTalk()); //Dr Spikey is Talking 
-        StartCoroutine(WindMageTalk()); //Wind Mage is Talking  */
-
-        /*switch (dialogue[0].toPlay)
-        {
-            case 0:
-                windMageAnim.SetBool("Talking", true); //Wind Mage is talking
-                break;
-
-            case 1:
-                StartCoroutine(DrSpikeyTalk());
-                break;
-
-            case 2:
-                StartCoroutine(WindMageTalk());
-                break;
-
-            default:
-                EndDialog();
-                break;
-        }
-    }*/
-
-    public void StartDialogue()
-    {
-        dialogText.text = dialogues.dialogue[currentSentenceInt].sentence;
-        LevelManager.runGame = false;
-        StartCoroutine(TypeSentence(sentences));
-        /*
-        switch (dialogue[currentSentenceInt].toPlay)
+        switch (dialogues.dialogue[currentSentenceInt].toPlay)
         {
             case Dialogue.TypeOfAnims.drSpikyStart:
-                StartCoroutine(DrSpikeyTalk());
+                drSpikyAnim.SetBool("Talking", true);
                 break;
 
             case Dialogue.TypeOfAnims.mageStart:
+                windMageAnim.SetBool("Talking", true);
                 break;
 
+            case Dialogue.TypeOfAnims.drSpikyTalk:
+                StartCoroutine(DrSpikeyTalk());
+                break;
 
-        }*/
+            case Dialogue.TypeOfAnims.mageTalk:
+                StartCoroutine(WindMageTalk());
+                break;
+        }
+    }
 
-       
+    #region Dialogue Functions
+    public void StartDialogue()
+    {
+        LevelManager.runGame = false;
 
+        dialogText.text = dialogues.dialogue[currentSentenceInt].sentence;
+        StartCoroutine(TypeSentence(dialogues.dialogue[currentSentenceInt].sentence));
+
+        SwitchAnims();
     }
 
     //display new sentence
     public void DisplayNextSentence()
     {
         //check if the current Sentence Int is less than amt of arrays needed, if so play 1 more sentence
-        if (currentSentenceInt < numberOfSentences)
+        if (currentSentenceInt < dialogues.dialogue.Length)
         {
-            //StartCoroutine(TypeSentence(sentences));
-            dialogText.text = sentences[currentSentenceInt += 1];
-            StartCoroutine(TypeSentence(sentences));
+            dialogText.text = dialogues.dialogue[currentSentenceInt += 1].sentence;
+            StartCoroutine(TypeSentence(dialogues.dialogue[currentSentenceInt].sentence));
+
+            SwitchAnims();
         } else
         {
             EndDialog();
         }
     }
 
+    public void EndDialog()
+    {
+        LevelManager.runGame = true;
+        tutorial.SetActive(false);
+    }
+    #endregion
+
     //type the sentence words 
-    IEnumerator TypeSentence(string[] sentence)
+    IEnumerator TypeSentence(string sentence)
     {
         ableToContinue = false;
 
         dialogText.text = "";
-        foreach (char letter in sentence[currentSentenceInt].ToCharArray())
+        foreach (char letter in sentence.ToCharArray())
         {
             dialogText.text += letter;
             yield return null;
@@ -119,6 +106,7 @@ public class DialogManager : MonoBehaviour
         ableToContinue = true;
     }
 
+    #region Animator Functions
     IEnumerator WindMageTalk()
     {
         drSpikyAnim.SetBool("Talking", false); //dr spikey is talking
@@ -136,10 +124,5 @@ public class DialogManager : MonoBehaviour
 
         drSpikyAnim.SetBool("Talking", true); //Dr Spikey is talking
     }
-
-    public void EndDialog()
-    {
-        LevelManager.runGame = true;
-        tutorial.SetActive(false);
-    }
+    #endregion
 }

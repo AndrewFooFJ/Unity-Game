@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
-    public Dialogue[] dialogue;
+    public Dialogues dialogues;
 
     [Header("Sentences Variables")]
     [TextArea(3, 10)]
@@ -69,9 +69,24 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        dialogText.text = sentences[currentSentenceInt];
+        dialogText.text = dialogues.dialogue[currentSentenceInt].sentence;
         LevelManager.runGame = false;
         StartCoroutine(TypeSentence(sentences));
+        /*
+        switch (dialogue[currentSentenceInt].toPlay)
+        {
+            case Dialogue.TypeOfAnims.drSpikyStart:
+                StartCoroutine(DrSpikeyTalk());
+                break;
+
+            case Dialogue.TypeOfAnims.mageStart:
+                break;
+
+
+        }*/
+
+       
+
     }
 
     //display new sentence

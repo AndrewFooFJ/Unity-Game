@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditorInternal;
 
 // Tells Unity to use this Editor class with the WaveManager script component.
-[CustomEditor(typeof(DialogManager))]
+[CustomEditor(typeof(Dialogues))]
 public class DialogueEditor : Editor
 {
 
@@ -62,6 +62,9 @@ public class DialogueEditor : Editor
         serializedObject.Update(); // Update the array property's representation in the inspector
 
         list.DoLayoutList(); // Have the ReorderableList do its work
+
+       
+
 
         // We need to call this so that changes on the Inspector are saved by Unity.
         serializedObject.ApplyModifiedProperties();

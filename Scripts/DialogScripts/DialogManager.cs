@@ -72,13 +72,13 @@ public class DialogManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         //check if the current Sentence Int is less than amt of arrays needed, if so play 1 more sentence
-        if (currentSentenceInt < dialogues.dialogue.Length)
+        if (currentSentenceInt < dialogues.dialogue.Length - 1)
         {
             dialogText.text = dialogues.dialogue[currentSentenceInt += 1].sentence;
             StartCoroutine(TypeSentence(dialogues.dialogue[currentSentenceInt].sentence));
 
             SwitchAnims();
-        } else
+        } else 
         {
             EndDialog();
         }

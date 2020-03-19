@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c324eb700914e4bac7ff4c3a24d62e, type: 3}
+  m_Name: Tutorial Dialogue
+  m_EditorClassIdentifier: 
+  dialogue:
+  - toPlay: 1
+    sentence: Hello
+  - toPlay: 2
+    sentence: "I will eat these animal, and I\u2019m going to be Rich after I Experiment
+      on those Animals. Hey?! You Brat!!!! Get Out of My Laboratory!!!!"
+  - toPlay: 3
+    sentence: Hey Dr Hedgehog Let those Animals Goooo!!!!
+  - toPlay: 2
+    sentence: "Who you calling Dr Hedgehog. I\u2019m Dr Spiky, the most Talented and
+      the most Han...."
+  - toPlay: 3
+    sentence: "Come on Let\u2019s set those animal free while he\u2019s distracted,
+      swipe your screen in the direction where you want the wind to go"

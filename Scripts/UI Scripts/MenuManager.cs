@@ -16,6 +16,12 @@ public class MenuManager : MonoBehaviour
 
     public Animator loadingScreen;
 
+    public CrateScriptableObject[] crateTypes;
+    public Text[] crateName;
+    public Text[] reason;
+    public Image[] crateImg;
+    int arrayInt;
+
     [Header("Text Variables")]
     public Text seedCountText;
     public Text liveCountText;
@@ -27,13 +33,39 @@ public class MenuManager : MonoBehaviour
         CloseCreditPage();*/
         //OpenCrateSelection();
         //OpenStorePage();
-        clearPlayerprefsScreen.SetActive(false);
+        //clearPlayerprefsScreen.SetActive(false);
     }
 
     private void Update()
     {
         seedCountText.text = "Paw Coins: " + InGamePurchases.inGameCurrency;
         liveCountText.text = "Lives: " + LevelManager.liveCount;
+
+        SwitchCrateTypes();
+    }
+
+    void SwitchCrateTypes()
+    {
+        switch (arrayInt)
+        {
+            case 0:
+                crateName[0].text = crateTypes[0].nameOfCrate;
+                reason[0].text = crateTypes[0].unlockCritrea;
+                crateImg[0].sprite = crateTypes[0].crateSprite;
+                break;
+
+            case 1:
+                crateName[1].text = crateTypes[1].nameOfCrate;
+                reason[1].text = crateTypes[1].unlockCritrea;
+                crateImg[1].sprite = crateTypes[1].crateSprite;
+                break;
+
+            case 2:
+                crateName[2].text = crateTypes[2].nameOfCrate;
+                reason[2].text = crateTypes[2].unlockCritrea;
+                crateImg[2].sprite = crateTypes[2].crateSprite;
+                break;
+        }
     }
 
     public void StartGame()

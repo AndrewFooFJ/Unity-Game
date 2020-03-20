@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - toPlay: 1
-    sentence: Hello
+    sentence: Hello young mage, my name is Anemone, I am a wind mage. You are here
+      to learn how to use your wind magic. ("Laughter at the Background"). What was
+      that!!
   - toPlay: 2
-    sentence: "I will eat these animal, and I\u2019m going to be Rich after I Experiment
-      on those Animals. Hey?! You Brat!!!! Get Out of My Laboratory!!!!"
+    sentence: "I will experiment on these animal, and I\u2019m going to be Rich after
+      I Experiment on those Animals. Hey?! You Brat!!!! Get Out of My Laboratory!!!!"
   - toPlay: 3
     sentence: Hey Dr Hedgehog Let those Animals Goooo!!!!
   - toPlay: 2

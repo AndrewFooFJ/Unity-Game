@@ -17,6 +17,7 @@ public class WinFlag : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.tag == "Player")
         {
             if (!LevelManager.gameIsLost)
@@ -31,7 +32,7 @@ public class WinFlag : MonoBehaviour
         theLM.UpdateWinScreen();
         theLM.CheckHighscore();
 
-        PlayerPrefs.SetInt("Level Unlocked", levelToUnlocked);
+        PlayerPrefs.SetInt("Level Unlocked", levelToUnlocked); 
         theLM.WinGame();
     }
 }

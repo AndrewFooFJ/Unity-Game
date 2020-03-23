@@ -264,7 +264,7 @@ public class LevelManager : MonoBehaviour
             runGame = true;
             theCam.followPlayer = true;
             starsHolder.SetActive(true);
-            gameIsLost = false;
+            LevelManager.gameIsLost = false;
             loseScreen.SetActive(false);
         } else
         {
@@ -286,7 +286,6 @@ public class LevelManager : MonoBehaviour
         winScreen.SetActive(true);
         starsHolder.SetActive(false);
         runGame = false;
-        //Time.timeScale = 0f;
     }
 
     public void RestartGame()

@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class LevelSelection : MonoBehaviour
 {
-    public int levelNum;
+    int levelNum;
 
     public int[] starsHighscore;
 
-    public Image[] stars1;
+    /*public Image[] stars1;
     public Image[] stars2;
     public Image[] stars3;
 
     public Sprite emptyStar;
-    public Sprite filledStar;
+    public Sprite filledStar;*/
+
+    public Sprite[] starsAmt;
+    public Image[] levelSpriteIndicator;
 
     public GameObject[] unlockedLevels;
     public GameObject[] lockedLevels;
@@ -23,25 +26,14 @@ public class LevelSelection : MonoBehaviour
     void Start()
     {
         PlayerPrefsFunctions();
+
+        UpdateLevels();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //unlock the levels respectively
-        UpdateLevels(0);
-        UpdateLevels(1);
-        UpdateLevels(2);
-        UpdateLevels(3);
-        UpdateLevels(4);
-        UpdateLevels(5);
-        UpdateLevels(6);
-        UpdateLevels(7);
-        UpdateLevels(8);
-        UpdateLevels(9);
-        UpdateLevels(10);
-        UpdateLevels(11);
-        UpdateLevels(12);
+        //UpdateLevels();
 
         PlayerPrefsFunctions();
     }
@@ -75,9 +67,9 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.GetInt("Level 8 Stars", starsHighscore[7]);
         PlayerPrefs.GetInt("Level 9 Stars", starsHighscore[8]);
         PlayerPrefs.GetInt("Level 10 Stars", starsHighscore[9]);
-        PlayerPrefs.GetInt("Level 11 Stars", starsHighscore[10]);
+        /*PlayerPrefs.GetInt("Level 11 Stars", starsHighscore[10]);
         PlayerPrefs.GetInt("Level 12 Stars", starsHighscore[11]);
-        PlayerPrefs.GetInt("Level 13 Stars", starsHighscore[12]);
+        PlayerPrefs.GetInt("Level 13 Stars", starsHighscore[12]);*/
 
         //check if less stars does not override the max stars collected for each level
         for (int levelNum = 1; levelNum <= 12; levelNum++)
@@ -96,9 +88,9 @@ public class LevelSelection : MonoBehaviour
         UpdateStars("Level 8 Stars", 7);
         UpdateStars("Level 9 Stars", 8);
         UpdateStars("Level 10 Stars", 9);
-        UpdateStars("Level 11 Stars", 10);
+        /*UpdateStars("Level 11 Stars", 10);
         UpdateStars("Level 12 Stars", 11);
-        UpdateStars("Level 13 Stars", 11);
+        UpdateStars("Level 13 Stars", 11);*/
     }
     #endregion
 
@@ -119,30 +111,25 @@ public class LevelSelection : MonoBehaviour
     {
         if (PlayerPrefs.GetInt(levelStars, starsHighscore[levelNum]) == 0)
         {
-            stars1[levelNum].sprite = emptyStar;
+            levelSpriteIndicator[levelNum].sprite = starsAmt[0];
+            /*stars1[levelNum].sprite = emptyStar;
             stars2[levelNum].sprite = emptyStar;
-            stars3[levelNum].sprite = emptyStar;
+            stars3[levelNum].sprite = emptyStar;*/
         }
 
         if (PlayerPrefs.GetInt(levelStars, starsHighscore[levelNum]) == 1)
         {
-            stars1[levelNum].sprite = filledStar;
-            stars2[levelNum].sprite = emptyStar;
-            stars3[levelNum].sprite = emptyStar;
+            levelSpriteIndicator[levelNum].sprite = starsAmt[1];
         }
 
         if (PlayerPrefs.GetInt(levelStars, starsHighscore[levelNum]) == 2)
         {
-            stars1[levelNum].sprite = filledStar;
-            stars2[levelNum].sprite = filledStar;
-            stars3[levelNum].sprite = emptyStar;
+            levelSpriteIndicator[levelNum].sprite = starsAmt[2];
         }
 
         if (PlayerPrefs.GetInt(levelStars, starsHighscore[levelNum]) >= 3)
         {
-            stars1[levelNum].sprite = filledStar;
-            stars2[levelNum].sprite = filledStar;
-            stars3[levelNum].sprite = filledStar;
+            levelSpriteIndicator[levelNum].sprite = starsAmt[3];
         }
     }
     #endregion
@@ -156,15 +143,98 @@ public class LevelSelection : MonoBehaviour
     }
 
     //updates the levels that have been unlocked
-    public void UpdateLevels(int numOfLevelsUnlocked)
+    public void UpdateLevels()//int numOfLevelsUnlocked)
     {
-        if (PlayerPrefs.GetInt("Level Unlocked") == numOfLevelsUnlocked)
+        int numOfLevelsUnlocked = PlayerPrefs.GetInt("Level Unlocked");
+        Debug.Log("Number of levels unlocked: " + numOfLevelsUnlocked);
+
+        switch (numOfLevelsUnlocked)
         {
-            for (int levelUnlock = 0; levelUnlock <= numOfLevelsUnlocked; levelUnlock++)
+            case 0:
+                UnlockedLevels(unlockedLevels[0], lockedLevels[0]);
+                break;
+
+            case 1:
+                for (int num = 0; num < 2; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                    Debug.Log("hi" + num +"No");
+                }
+                break;
+
+            case 2:
+                for (int num = 0; num < 3; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 3:
+                for (int num = 0; num < 4; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 4:
+                for (int num = 0; num < 5; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 5:
+                for (int num = 0; num < 6; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 6:
+                for (int num = 0; num < 7; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 7:
+                for (int num = 0; num < 8; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 8:
+                for (int num = 0; num < 9; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 9:
+                for (int num = 0; num < 10; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 10:
+                for (int num = 0; num < 11; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+        }
+
+        /*if (numOfLevelsUnlocked == 0)//PlayerPrefs.GetInt("Level Unlocked") == numOfLevelsUnlocked)
+        {
+            UnlockedLevels(unlockedLevels[0], lockedLevels[0]);
+            /*for (int levelUnlock = 0; levelUnlock <= numOfLevelsUnlocked; levelUnlock++)
             {
                 UnlockedLevels(unlockedLevels[levelUnlock], lockedLevels[levelUnlock]); //unlock level 1
+                //Debug.Log("Level Unlocked " + levelUnlock);
             }
-        }
+        }*/
     }
     #endregion
 }

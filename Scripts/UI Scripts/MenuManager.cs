@@ -38,8 +38,8 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        seedCountText.text = "Paw Coins: " + InGamePurchases.inGameCurrency;
-        liveCountText.text = "Lives: " + LevelManager.liveCount;
+        seedCountText.text = ": " + InGamePurchases.inGameCurrency;
+        liveCountText.text = ": " + LevelManager.liveCount;
 
         SwitchCrateTypes();
     }

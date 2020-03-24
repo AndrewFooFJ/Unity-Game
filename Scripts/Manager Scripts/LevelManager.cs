@@ -92,7 +92,7 @@ public class LevelManager : MonoBehaviour
         SwitchCrate();
         UpdateStars();
 
-        liveCountText.text = "Lives: " + liveCount;
+        liveCountText.text = ": " + liveCount;
     }
 
     public void SwitchCrate()

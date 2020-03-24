@@ -45,8 +45,11 @@ public class Balloon : MonoBehaviour
     {
         if (other.tag == "Spike")
         {
-            Pop();
-            Debug.Log("Spike is hit");
+            if (LevelManager.runGame)
+            {
+                Pop();
+                Debug.Log("Spike is hit");
+            }
         }
     }
 
@@ -61,6 +64,7 @@ public class Balloon : MonoBehaviour
         hasPop = true;
         LevelManager.PlayAudioSource(balloonPopSound); //play pop sound
         LevelManager.runGame = false;
+        LevelManager.gameIsLost = true;
         Destroy(Instantiate(balloonExplosion, transform.position, Quaternion.identity), timeBefDissapear); //spawn balloon explosion and despawn after 0.5f
         theLM.LoseGame(); //lose game when player pops balloon
         gameObject.SetActive(false);

@@ -285,6 +285,7 @@ public class LevelManager : MonoBehaviour
         PlayAudioSource(clappingSound);
         winScreen.SetActive(true);
         starsHolder.SetActive(false);
+        Debug.Log("win is on");
         runGame = false;
     }
 
@@ -292,6 +293,9 @@ public class LevelManager : MonoBehaviour
     {
         turnOnEffects = false;
         Scene currentScene = SceneManager.GetActiveScene(); //get the current active scene
+
+        gameIsLost = false;
+        //LevelManager.runGame = true;
 
         SceneManager.LoadScene(currentScene.name); //load the current scene by its name
         Time.timeScale = 1f; //reset the time scale back to 1

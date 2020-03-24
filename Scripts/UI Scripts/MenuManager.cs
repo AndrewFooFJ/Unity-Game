@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject creditPage;
     public GameObject levelSelectScreen;
+    public GameObject[] levelSelectPage;
     public GameObject clearPlayerprefsScreen;
     public GameObject storePage;
     public GameObject[] crateSelectionScreens;
@@ -28,12 +29,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        //close level select and Credit Page and open main menu by default
-        /*CloseLevelSelect(); 
-        CloseCreditPage();*/
-        //OpenCrateSelection();
-        //OpenStorePage();
-        //clearPlayerprefsScreen.SetActive(false);
+
     }
 
     private void Update()
@@ -68,55 +64,61 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
-    {
-        //load level 1 for now
-        SceneManager.LoadScene("GameScene");
-    }
-
     public void OpenCrateSelection()
     {
-        mainMenu.SetActive(false);
-        crateSelectionScreens[0].SetActive(true);
+        OpenClose(crateSelectionScreens[0], levelSelectScreen);
     }
 
     public void OpenStorePage()
     {
-        mainMenu.SetActive(false);
-        storePage.SetActive(true);
+        OpenClose(storePage, mainMenu);
     }
 
     //opens level selection
-    public void OpenLevelSelect()
+    public void OpenLevelSelectMenu()
     {
-        mainMenu.SetActive(false);
-        levelSelectScreen.SetActive(true);
+        OpenClose(levelSelectScreen, mainMenu);
     }
 
     public void OpenPage1()
     {
-        PageSelectForCrates(crateSelectionScreens[0], crateSelectionScreens[1]);
+        OpenClose(crateSelectionScreens[0], crateSelectionScreens[1]);
     }
 
     public void OpenPage2()
     {
-        PageSelectForCrates(crateSelectionScreens[1], crateSelectionScreens[0]);
+        OpenClose(crateSelectionScreens[1], crateSelectionScreens[0]);
     }
 
     public void OpenPage23()
     {
-        PageSelectForCrates(crateSelectionScreens[1], crateSelectionScreens[2]);
+        OpenClose(crateSelectionScreens[1], crateSelectionScreens[2]);
     }
 
     public void OpenPage3()
     {
-        PageSelectForCrates(crateSelectionScreens[2], crateSelectionScreens[1]);
+        OpenClose(crateSelectionScreens[2], crateSelectionScreens[1]);
     }
 
-    void PageSelectForCrates(GameObject screenToOpen, GameObject screenToClose)
+    void OpenClose(GameObject screenToOpen, GameObject screenToClose)
     {
         screenToOpen.SetActive(true);
         screenToClose.SetActive(false);
+    }
+
+    public void CloseLevelSelection()
+    {
+        for (int p = 0; p <= 0; p++)
+        {
+            levelSelectPage[p].SetActive(false);
+        }
+
+        for (int p = 0; p <= 2; p++)
+        {
+            crateSelectionScreens[p].SetActive(false);
+        }
+
+        crateSelectionScreens[0].SetActive(true);
     }
 
     public void CloseCrateSelection()
@@ -126,32 +128,34 @@ public class MenuManager : MonoBehaviour
             crateSelectionScreens[p].SetActive(false);
         }
 
-        mainMenu.SetActive(true);
+        for (int p = 0; p <= 0; p++)
+        {
+            levelSelectPage[p].SetActive(false);
+        }
+
+        levelSelectPage[0].SetActive(true);
     }
 
     public void CloseStorePage()
     {
-        mainMenu.SetActive(true);
-        storePage.SetActive(false);
+        OpenClose(mainMenu, storePage);
     }
 
     //closes level selection
     public void CloseLevelSelect()
     {
-        mainMenu.SetActive(true);
-        levelSelectScreen.SetActive(false);
+        OpenClose(mainMenu, levelSelectScreen);
     }
 
     public void OpenCreditPage()
     {
-        creditPage.SetActive(true);
-        mainMenu.SetActive(false);
+        OpenClose(creditPage, mainMenu);
     }
 
     public void CloseCreditPage()
     {
-        creditPage.SetActive(false);
-        mainMenu.SetActive(true);
+        OpenClose(mainMenu, creditPage);
+
     }
 
     //load level with selected scene name

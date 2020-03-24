@@ -5714,6 +5714,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1421155401469407364, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1421155400130562677, guid: 5c615d6c29aa07849a6581b4c5ddfff5,
         type: 3}
       propertyPath: balloon.Array.size
@@ -6280,6 +6285,10 @@ PrefabInstance:
     - target: {fileID: 1756687970, guid: e1471768a9133bd4894e41cfff90224b, type: 3}
       propertyPath: m_Pivot.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515828219, guid: e1471768a9133bd4894e41cfff90224b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 17549082, guid: e1471768a9133bd4894e41cfff90224b, type: 3}
       propertyPath: m_AnchoredPosition.x

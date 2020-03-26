@@ -34,9 +34,6 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.GetInt("AlienCrate");
         PlayerPrefs.GetInt("LuxuryCrate");
 
-        Debug.Log("Alien Crate: " + PlayerPrefs.GetInt("AlienCrate"));
-        Debug.Log("Luxury Crate: " + PlayerPrefs.GetInt("LuxuryCrate"));
-
         SwitchCrateTypes();
     }
 
@@ -89,6 +86,8 @@ public class MenuManager : MonoBehaviour
                 crateName[0].text = crateTypes[0].nameOfCrate;
                 reason[0].text = crateTypes[0].unlockCritrea;
                 crateImg[0].sprite = crateTypes[0].crateSprite;
+
+                crateSelectionButtons[arrayInt].SetActive(true);
                 break;
 
             case 1:

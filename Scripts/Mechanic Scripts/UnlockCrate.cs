@@ -13,7 +13,7 @@ public class UnlockCrate : MonoBehaviour
         {
             Destroy(this.gameObject);
             PlayerPrefs.SetInt(playerprefName, 1);
-            FindObjectOfType<LevelManager>().UnlockCrate(crate, playerprefName); //unlock crate function
+            FindObjectOfType<LevelManager>().UnlockCrate(crate); //unlock crate function
         }
     }
 }

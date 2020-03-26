@@ -124,23 +124,19 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void UnlockCrate(CrateScriptableObject crate, string cratePlayerprefs)
+    public void UnlockCrate(CrateScriptableObject crate)
     {
         unlockCrateScreen.SetActive(true);
 
         crateUnlockImg.sprite = crate.crateSprite;
         crateUnlockText.text = crate.nameOfCrate + " Unlocked";
-
-        Time.timeScale = 0f; //if animation does not work, this is problem
-
-        PlayerPrefs.SetInt(cratePlayerprefs, 1);
     }
 
     public void CloseUnlockScreen()
     {
         unlockCrateScreen.SetActive(false);
 
-        Time.timeScale = 1f; //if animation does not work, this is problem
+       // Time.timeScale = 1f; //if animation does not work, this is problem
     }
 
     #region Audio Functions

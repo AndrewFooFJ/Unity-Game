@@ -36,7 +36,12 @@ public class LevelManager : MonoBehaviour
     [Header("Screens")]
     public GameObject winScreen;
     public GameObject loseScreen;
+    public GameObject unlockCrateScreen;
     public static bool gameIsLost = false;
+
+    [Header("Crate Unlock Variables")]
+    public Text crateUnlockText;
+    public Image crateUnlockImg;
 
     [Header("Stars Variables")]
     public static int totalStarCount;
@@ -117,6 +122,25 @@ public class LevelManager : MonoBehaviour
                 crates[2].SetActive(true);
                 break;
         }
+    }
+
+    public void UnlockCrate(CrateScriptableObject crate, string cratePlayerprefs)
+    {
+        unlockCrateScreen.SetActive(true);
+
+        crateUnlockImg.sprite = crate.crateSprite;
+        crateUnlockText.text = crate.nameOfCrate + " Unlocked";
+
+        Time.timeScale = 0f; //if animation does not work, this is problem
+
+        PlayerPrefs.SetInt(cratePlayerprefs, 1);
+    }
+
+    public void CloseUnlockScreen()
+    {
+        unlockCrateScreen.SetActive(false);
+
+        Time.timeScale = 1f; //if animation does not work, this is problem
     }
 
     #region Audio Functions

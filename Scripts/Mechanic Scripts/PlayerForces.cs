@@ -25,6 +25,7 @@ public class PlayerForces : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerRb.gravityScale = 1;
 
         theBalloon = FindObjectOfType<Balloon>();
         theWind = FindObjectOfType<WindSwipe>();
@@ -37,14 +38,16 @@ public class PlayerForces : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerMovement();
-        StopMoving();
+        //StopMoving();
         CalculateMouseDrag();
     }
 
-    void StopMoving()
+    public void StopMoving()
     {
+        playerRb.gravityScale = 0;
+
         //allow the crate to move the a direction for a few sec before switching back to its normal speed
-        if (theWind.touchPosition.x > 0 ||
+       /* if (theWind.touchPosition.x > 0 ||
             theWind.touchPosition.x < 0 ||
             theWind.touchPosition.y > 0 ||
             theWind.touchPosition.y < 0)
@@ -54,7 +57,7 @@ public class PlayerForces : MonoBehaviour
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, playerRb.velocity.y);
             timeBefChangeWind = startTimeBefChangeWind;
-        }
+        }*/
     }
 
     public void PlayerMovement()

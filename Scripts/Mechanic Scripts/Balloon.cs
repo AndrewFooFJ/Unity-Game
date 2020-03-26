@@ -61,6 +61,7 @@ public class Balloon : MonoBehaviour
 
     void Pop()
     {
+        FindObjectOfType<PlayerForces>().StopMoving();
         hasPop = true;
         LevelManager.PlayAudioSource(balloonPopSound); //play pop sound
         LevelManager.runGame = false;

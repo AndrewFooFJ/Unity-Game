@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     public GameObject clearPlayerprefsScreen;
     public GameObject storePage;
     public GameObject[] crateSelectionScreens;
+    public GameObject[] crateSelectionButtons;
 
     //public Animator loadingScreen;
 
@@ -30,6 +31,12 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.GetInt("AlienCrate");
+        PlayerPrefs.GetInt("LuxuryCrate");
+
+        Debug.Log("Alien Crate: " + PlayerPrefs.GetInt("AlienCrate"));
+        Debug.Log("Luxury Crate: " + PlayerPrefs.GetInt("LuxuryCrate"));
+
         SwitchCrateTypes();
     }
 
@@ -38,7 +45,40 @@ public class MenuManager : MonoBehaviour
         seedCountText.text = ": " + InGamePurchases.inGameCurrency;
         liveCountText.text = ": " + LevelManager.liveCount;
 
+        CheckCrateUnlock("AlienCrate");
+        CheckCrateUnlock("LuxuryCrate");
+
         SwitchCrateTypes();
+    }
+
+    void CheckCrateUnlock(string playerprefsName)
+    {
+        switch (PlayerPrefs.GetInt(playerprefsName))
+        {
+            case 0:
+                crateName[arrayInt].text = "???";
+                reason[arrayInt].text = crateTypes[arrayInt].unlockCritrea;
+                crateImg[arrayInt].sprite = crateTypes[arrayInt].previewSprite;
+                crateSelectionButtons[arrayInt].SetActive(false);
+                Debug.Log("Not unlocked: " + playerprefsName);
+                break;
+
+            case 1:
+                crateName[arrayInt].text = crateTypes[arrayInt].nameOfCrate;
+                reason[arrayInt].text = crateTypes[arrayInt].unlockCritrea;
+                crateImg[arrayInt].sprite = crateTypes[arrayInt].crateSprite;
+                crateSelectionButtons[arrayInt].SetActive(true);
+                Debug.Log("it is unlocked: " + playerprefsName);
+                break;
+
+            default:
+                crateName[arrayInt].text = "???";
+                reason[arrayInt].text = crateTypes[arrayInt].unlockCritrea;
+                crateImg[arrayInt].sprite = crateTypes[arrayInt].previewSprite;
+                crateSelectionButtons[arrayInt].SetActive(false);
+                Debug.Log("Cant find anything");
+                break;
+        }
     }
 
     void SwitchCrateTypes()
@@ -52,15 +92,11 @@ public class MenuManager : MonoBehaviour
                 break;
 
             case 1:
-                crateName[1].text = crateTypes[1].nameOfCrate;
-                reason[1].text = crateTypes[1].unlockCritrea;
-                crateImg[1].sprite = crateTypes[1].crateSprite;
+                CheckCrateUnlock("LuxuryCrate");
                 break;
 
             case 2:
-                crateName[2].text = crateTypes[2].nameOfCrate;
-                reason[2].text = crateTypes[2].unlockCritrea;
-                crateImg[2].sprite = crateTypes[2].crateSprite;
+                CheckCrateUnlock("AlienCrate");
                 break;
         }
     }

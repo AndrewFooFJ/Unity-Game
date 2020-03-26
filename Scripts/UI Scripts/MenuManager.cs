@@ -83,21 +83,25 @@ public class MenuManager : MonoBehaviour
     public void OpenPage1()
     {
         OpenClose(crateSelectionScreens[0], crateSelectionScreens[1]);
+        arrayInt = 0;
     }
 
     public void OpenPage2()
     {
         OpenClose(crateSelectionScreens[1], crateSelectionScreens[0]);
+        arrayInt = 1;
     }
 
     public void OpenPage23()
     {
         OpenClose(crateSelectionScreens[1], crateSelectionScreens[2]);
+        arrayInt = 1;
     }
 
     public void OpenPage3()
     {
         OpenClose(crateSelectionScreens[2], crateSelectionScreens[1]);
+        arrayInt = 2;
     }
 
     void OpenClose(GameObject screenToOpen, GameObject screenToClose)

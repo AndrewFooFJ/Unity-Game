@@ -9,4 +9,5 @@ public class CrateScriptableObject : ScriptableObject
     public string nameOfCrate;
     public string unlockCritrea;
     public Sprite crateSprite;
+    public Sprite previewSprite;
 }

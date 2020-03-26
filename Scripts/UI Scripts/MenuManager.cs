@@ -15,8 +15,9 @@ public class MenuManager : MonoBehaviour
     public GameObject storePage;
     public GameObject[] crateSelectionScreens;
 
-    public Animator loadingScreen;
+    //public Animator loadingScreen;
 
+    [Header("Crate Scriptable Objects")]
     public CrateScriptableObject[] crateTypes;
     public Text[] crateName;
     public Text[] reason;
@@ -29,7 +30,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-
+        SwitchCrateTypes();
     }
 
     private void Update()
@@ -64,11 +65,25 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    //open level selection page 1
+    public void OpenLevelSelectPg1()
+    {
+        OpenClose(levelSelectPage[0], levelSelectPage[1]);
+    }
+
+    //open level selection page 2
+    public void OpenLevelSelectPg2()
+    {
+        OpenClose(levelSelectPage[1], levelSelectPage[0]);
+    }
+
+    //open crate selection page 1 from level select screen
     public void OpenCrateSelection()
     {
         OpenClose(crateSelectionScreens[0], levelSelectScreen);
     }
 
+    //open the store page
     public void OpenStorePage()
     {
         OpenClose(storePage, mainMenu);
@@ -78,26 +93,31 @@ public class MenuManager : MonoBehaviour
     public void OpenLevelSelectMenu()
     {
         OpenClose(levelSelectScreen, mainMenu);
+        OpenClose(levelSelectPage[0], levelSelectPage[1]);
     }
 
+    //open page 1 of the crate selection page
     public void OpenPage1()
     {
         OpenClose(crateSelectionScreens[0], crateSelectionScreens[1]);
         arrayInt = 0;
     }
 
+    //open page 2 of crate selection page from page 1
     public void OpenPage2()
     {
         OpenClose(crateSelectionScreens[1], crateSelectionScreens[0]);
         arrayInt = 1;
     }
 
+    //open page 2 of crate selection page from page 3
     public void OpenPage23()
     {
         OpenClose(crateSelectionScreens[1], crateSelectionScreens[2]);
         arrayInt = 1;
     }
 
+    //open page 3 of crate selection page from page 2
     public void OpenPage3()
     {
         OpenClose(crateSelectionScreens[2], crateSelectionScreens[1]);
@@ -110,9 +130,10 @@ public class MenuManager : MonoBehaviour
         screenToClose.SetActive(false);
     }
 
+    //open the first page of crate selection from the crate selection button
     public void CloseLevelSelection()
     {
-        for (int p = 0; p <= 0; p++)
+        for (int p = 0; p <= 1; p++)
         {
             levelSelectPage[p].SetActive(false);
         }
@@ -125,6 +146,7 @@ public class MenuManager : MonoBehaviour
         crateSelectionScreens[0].SetActive(true);
     }
 
+    //open the first page of level selection from the level selection button
     public void CloseCrateSelection()
     {
         for (int p = 0; p <= 2; p++)
@@ -132,7 +154,7 @@ public class MenuManager : MonoBehaviour
             crateSelectionScreens[p].SetActive(false);
         }
 
-        for (int p = 0; p <= 0; p++)
+        for (int p = 0; p <= 1; p++)
         {
             levelSelectPage[p].SetActive(false);
         }
@@ -148,6 +170,16 @@ public class MenuManager : MonoBehaviour
     //closes level selection
     public void CloseLevelSelect()
     {
+        for (int p = 0; p <= 2; p++)
+        {
+            crateSelectionScreens[p].SetActive(false);
+        }
+
+        for (int p = 0; p <= 0; p++)
+        {
+            levelSelectPage[p].SetActive(false);
+        }
+
         OpenClose(mainMenu, levelSelectScreen);
     }
 

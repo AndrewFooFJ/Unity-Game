@@ -58,12 +58,14 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.GetInt("Level 8 Stars", starsHighscore[7]);
         PlayerPrefs.GetInt("Level 9 Stars", starsHighscore[8]);
         PlayerPrefs.GetInt("Level 10 Stars", starsHighscore[9]);
-        /*PlayerPrefs.GetInt("Level 11 Stars", starsHighscore[10]);
+        PlayerPrefs.GetInt("Level 11 Stars", starsHighscore[10]);
         PlayerPrefs.GetInt("Level 12 Stars", starsHighscore[11]);
-        PlayerPrefs.GetInt("Level 13 Stars", starsHighscore[12]);*/
+        PlayerPrefs.GetInt("Level 13 Stars", starsHighscore[12]);
+        PlayerPrefs.GetInt("Level 14 Stars", starsHighscore[13]);
+        PlayerPrefs.GetInt("Level 15 Stars", starsHighscore[14]);
 
         //check if less stars does not override the max stars collected for each level
-        for (int levelNum = 1; levelNum <= 12; levelNum++)
+        for (int levelNum = 1; levelNum <= 15; levelNum++)
         {
             CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
         }
@@ -79,9 +81,11 @@ public class LevelSelection : MonoBehaviour
         UpdateStars("Level 8 Stars", 7);
         UpdateStars("Level 9 Stars", 8);
         UpdateStars("Level 10 Stars", 9);
-        /*UpdateStars("Level 11 Stars", 10);
+        UpdateStars("Level 11 Stars", 10);
         UpdateStars("Level 12 Stars", 11);
-        UpdateStars("Level 13 Stars", 11);*/
+        UpdateStars("Level 13 Stars", 12);
+        UpdateStars("Level 14 Stars", 13);
+        UpdateStars("Level 15 Stars", 14);
     }
     #endregion
 
@@ -103,9 +107,6 @@ public class LevelSelection : MonoBehaviour
         if (PlayerPrefs.GetInt(levelStars, starsHighscore[levelNum]) == 0)
         {
             levelSpriteIndicator[levelNum].sprite = starsAmt[0];
-            /*stars1[levelNum].sprite = emptyStar;
-            stars2[levelNum].sprite = emptyStar;
-            stars3[levelNum].sprite = emptyStar;*/
         }
 
         if (PlayerPrefs.GetInt(levelStars, starsHighscore[levelNum]) == 1)
@@ -134,7 +135,7 @@ public class LevelSelection : MonoBehaviour
     }
 
     //updates the levels that have been unlocked
-    public void UpdateLevels()//int numOfLevelsUnlocked)
+    public void UpdateLevels()
     {
         int numOfLevelsUnlocked = PlayerPrefs.GetInt("Level Unlocked");
         Debug.Log("Number of levels unlocked: " + numOfLevelsUnlocked);
@@ -211,6 +212,41 @@ public class LevelSelection : MonoBehaviour
 
             case 10:
                 for (int num = 0; num < 11; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 11:
+                for (int num = 0; num < 12; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 12:
+                for (int num = 0; num < 13; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 13:
+                for (int num = 0; num < 14; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 14:
+                for (int num = 0; num < 15; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 15:
+                for (int num = 0; num < 16; num++)
                 {
                     UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
                 }

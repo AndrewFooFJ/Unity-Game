@@ -21,11 +21,17 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefsFunctions();
 
         UpdateLevels();
+
+        for (int levelNum = 1; levelNum <= 15; levelNum++)
+        {
+            CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateLevels();
         PlayerPrefsFunctions();
     }
 
@@ -92,6 +98,9 @@ public class LevelSelection : MonoBehaviour
     #region Check Star Count Functions
     void CheckStarCount(string levelStars, string maxLevelStars)
     {
+        Debug.Log(PlayerPrefs.GetInt(levelStars) + " is the current stars, " + levelStars);
+        Debug.Log(PlayerPrefs.GetInt(maxLevelStars) + " is the max current stars, " + maxLevelStars);
+
         //if level stars is more, set the max level stars to be level stars
         if (PlayerPrefs.GetInt(levelStars) > PlayerPrefs.GetInt(maxLevelStars))
         {
@@ -138,7 +147,6 @@ public class LevelSelection : MonoBehaviour
     public void UpdateLevels()
     {
         int numOfLevelsUnlocked = PlayerPrefs.GetInt("Level Unlocked");
-        Debug.Log("Number of levels unlocked: " + numOfLevelsUnlocked);
 
         switch (numOfLevelsUnlocked)
         {
@@ -150,7 +158,6 @@ public class LevelSelection : MonoBehaviour
                 for (int num = 0; num < 2; num++)
                 {
                     UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
-                    Debug.Log("hi" + num +"No");
                 }
                 break;
 

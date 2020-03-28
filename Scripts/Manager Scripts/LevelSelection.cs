@@ -9,13 +9,6 @@ public class LevelSelection : MonoBehaviour
 
     public int[] starsHighscore;
 
-    /*public Image[] stars1;
-    public Image[] stars2;
-    public Image[] stars3;
-
-    public Sprite emptyStar;
-    public Sprite filledStar;*/
-
     public Sprite[] starsAmt;
     public Image[] levelSpriteIndicator;
 
@@ -33,8 +26,6 @@ public class LevelSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UpdateLevels();
-
         PlayerPrefsFunctions();
     }
 
@@ -74,7 +65,7 @@ public class LevelSelection : MonoBehaviour
         //check if less stars does not override the max stars collected for each level
         for (int levelNum = 1; levelNum <= 12; levelNum++)
         {
-            CheckStarCount("Level " + levelNum + "Stars", "Max Level " + levelNum + " Stars");
+            CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
         }
 
         //update the stars based on each level collection of stars
@@ -100,7 +91,7 @@ public class LevelSelection : MonoBehaviour
         //if level stars is more, set the max level stars to be level stars
         if (PlayerPrefs.GetInt(levelStars) > PlayerPrefs.GetInt(maxLevelStars))
         {
-            PlayerPrefs.SetInt(maxLevelStars, (PlayerPrefs.GetInt(levelStars))); 
+            PlayerPrefs.SetInt(maxLevelStars, (PlayerPrefs.GetInt(levelStars)));
         }
 
         PlayerPrefs.SetInt(levelStars, PlayerPrefs.GetInt(maxLevelStars)); //set the level stars to be max level stars
@@ -225,16 +216,6 @@ public class LevelSelection : MonoBehaviour
                 }
                 break;
         }
-
-        /*if (numOfLevelsUnlocked == 0)//PlayerPrefs.GetInt("Level Unlocked") == numOfLevelsUnlocked)
-        {
-            UnlockedLevels(unlockedLevels[0], lockedLevels[0]);
-            /*for (int levelUnlock = 0; levelUnlock <= numOfLevelsUnlocked; levelUnlock++)
-            {
-                UnlockedLevels(unlockedLevels[levelUnlock], lockedLevels[levelUnlock]); //unlock level 1
-                //Debug.Log("Level Unlocked " + levelUnlock);
-            }
-        }*/
     }
     #endregion
 }

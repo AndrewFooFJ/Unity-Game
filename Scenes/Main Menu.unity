@@ -3320,7 +3320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Created By Broken Crate Studios(2020)
+  m_Text: Created By ...
 --- !u!222 &435741582
 CanvasRenderer:
   m_ObjectHideFlags: 0

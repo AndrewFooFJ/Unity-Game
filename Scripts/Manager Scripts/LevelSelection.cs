@@ -73,9 +73,10 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.GetInt("Level 17 Stars", starsHighscore[16]);
         PlayerPrefs.GetInt("Level 18 Stars", starsHighscore[17]);
         PlayerPrefs.GetInt("Level 19 Stars", starsHighscore[18]);
+        PlayerPrefs.GetInt("Level 20 Stars", starsHighscore[19]);
 
         //check if less stars does not override the max stars collected for each level
-        for (int levelNum = 1; levelNum <= 19; levelNum++)
+        for (int levelNum = 1; levelNum <= 20; levelNum++)
         {
             CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
         }
@@ -100,6 +101,7 @@ public class LevelSelection : MonoBehaviour
         UpdateStars("Level 17 Stars", 16);
         UpdateStars("Level 18 Stars", 17);
         UpdateStars("Level 19 Stars", 18);
+        UpdateStars("Level 20 Stars", 19);
     }
     #endregion
 
@@ -290,6 +292,13 @@ public class LevelSelection : MonoBehaviour
 
             case 19:
                 for (int num = 0; num < 20; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 20:
+                for (int num = 0; num < 21; num++)
                 {
                     UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
                 }

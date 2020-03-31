@@ -22,7 +22,7 @@ public class LevelSelection : MonoBehaviour
 
         UpdateLevels();
 
-        for (int levelNum = 1; levelNum <= 15; levelNum++)
+        for (int levelNum = 1; levelNum <= 19; levelNum++)
         {
             CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
         }
@@ -69,9 +69,13 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.GetInt("Level 13 Stars", starsHighscore[12]);
         PlayerPrefs.GetInt("Level 14 Stars", starsHighscore[13]);
         PlayerPrefs.GetInt("Level 15 Stars", starsHighscore[14]);
+        PlayerPrefs.GetInt("Level 16 Stars", starsHighscore[15]);
+        PlayerPrefs.GetInt("Level 17 Stars", starsHighscore[16]);
+        PlayerPrefs.GetInt("Level 18 Stars", starsHighscore[17]);
+        PlayerPrefs.GetInt("Level 19 Stars", starsHighscore[18]);
 
         //check if less stars does not override the max stars collected for each level
-        for (int levelNum = 1; levelNum <= 15; levelNum++)
+        for (int levelNum = 1; levelNum <= 19; levelNum++)
         {
             CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
         }
@@ -92,6 +96,10 @@ public class LevelSelection : MonoBehaviour
         UpdateStars("Level 13 Stars", 12);
         UpdateStars("Level 14 Stars", 13);
         UpdateStars("Level 15 Stars", 14);
+        UpdateStars("Level 16 Stars", 15);
+        UpdateStars("Level 17 Stars", 16);
+        UpdateStars("Level 18 Stars", 17);
+        UpdateStars("Level 19 Stars", 18);
     }
     #endregion
 
@@ -254,6 +262,34 @@ public class LevelSelection : MonoBehaviour
 
             case 15:
                 for (int num = 0; num < 16; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 16:
+                for (int num = 0; num < 17; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 17:
+                for (int num = 0; num < 18; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 18:
+                for (int num = 0; num < 19; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            case 19:
+                for (int num = 0; num < 20; num++)
                 {
                     UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
                 }

@@ -6,6 +6,8 @@ public class SpikeShooterAmmo : MonoBehaviour
 {
     Rigidbody2D spikeAmmoRb;
 
+    public GameObject spikeDestroyEffect;
+
     private void Start()
     {
         spikeAmmoRb = GetComponent<Rigidbody2D>();
@@ -19,5 +21,14 @@ public class SpikeShooterAmmo : MonoBehaviour
     public void FlyForward()
     {
         spikeAmmoRb.velocity = transform.right * 1;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Wall")
+        {
+            Destroy(Instantiate(spikeDestroyEffect, transform.position, Quaternion.identity), 1f);
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -6530,7 +6530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '10 Hearts for
+  m_Text: '10 Paw Coins for
 
     $0.10'
 --- !u!222 &968584980
@@ -10486,7 +10486,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '50 Hearts for
+  m_Text: '50 Paw Coins for
 
     $0.49'
 --- !u!222 &1433261837
@@ -11658,7 +11658,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '100 Hearts for
+  m_Text: '100 Paw Coins for
 
     $0.99'
 --- !u!222 &1615145559
@@ -13918,7 +13918,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e0da687928dac824d9496130cf5b9eb4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1d6d989eb04fb6478af1c95e5aea14d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

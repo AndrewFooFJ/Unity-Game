@@ -22,7 +22,7 @@ public class LevelSelection : MonoBehaviour
 
         UpdateLevels();
 
-        for (int levelNum = 1; levelNum <= 19; levelNum++)
+        for (int levelNum = 1; levelNum <= 20; levelNum++)
         {
             CheckStarCount("Level " + levelNum + " Stars", "Max Level " + levelNum + " Stars");
         }
@@ -298,7 +298,14 @@ public class LevelSelection : MonoBehaviour
                 break;
 
             case 20:
-                for (int num = 0; num < 21; num++)
+                for (int num = 0; num < 22; num++)
+                {
+                    UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
+                }
+                break;
+
+            default:
+                for (int num = 0; num < 22; num++)
                 {
                     UnlockedLevels(unlockedLevels[num], lockedLevels[num]);
                 }

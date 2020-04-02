@@ -11,17 +11,12 @@ public class WindSwipe : MonoBehaviour
     public Vector3 touchPosition;
     public int windPower;
 
-    [Header("Swipe Variables")]
-    public bool swipe = false;
-    public GameObject newTrail;
-
-    [Header("Time Variables")]
-    public float startingRechargeTime;
-    public float rechargeTime;
-    public float timeBefDespawn;
-    public float startTimeBefDespawn;
-    public float timeBefSpawning;
-    public float timeBefChangeWind = 5f;
+    // From Terence:
+    // Don't think they are used. Please review and delete if not needed.
+    // ------------------------------------
+    //[Header("Swipe Variables")]
+    //public bool swipe = false;
+    //public GameObject newTrail;
 
     [Header("Boolean Variables")]
     //public bool canPush;
@@ -30,47 +25,23 @@ public class WindSwipe : MonoBehaviour
     bool hasSwipe = false;
 
     PlayerForces thePlayer;
+    TrailRenderer trailRenderer; // Store the TrailRenderer here so we don't have to keep retrieving it using GetComponent().
     #endregion
 
     private void Start()
     {
         thePlayer = FindObjectOfType<PlayerForces>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     private void Update()
     {
         if (LevelManager.runGame == true)
         {
-            ClearWind(); //clear wind vertex on trail
-            WindControls(); //wind controls
+            //ClearWind(); //clear wind vertex on trail
+            HandlePlayerInput(); //wind controls
         }
     }
-
-    #region Wind Create Functions
-    //creates a ribbon like trail to symbolise the wind direction
-    public void CreateWind()
-    {
-        timeBefDespawn = startTimeBefDespawn;
-        GetComponent<TrailRenderer>().emitting = true;
-
-        touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-        this.transform.position = new Vector3(touchPosition.x, touchPosition.y, 0);
-    }
-
-    public void ClearWind()
-    {
-        if (hasSwipe == true)
-        {
-            timeBefDespawn -= Time.deltaTime;
-        }
-        
-        //if time has went to 0
-        if (timeBefDespawn <= 0)
-        {
-            GetComponent<TrailRenderer>().Clear();
-        }
-    }
-    #endregion
 
     #region Player Wind Controls Function
     void CalculateWindPower(int xDirection, int yDirection)
@@ -97,26 +68,54 @@ public class WindSwipe : MonoBehaviour
         windPower -= (int)((thePlayer.forceMultiplyer *= thePlayer.direction.x) + (thePlayer.forceMultiplyer *= thePlayer.direction.y));
     }
 
-    void WindControls()
+    void UpdateTrailRenderer(TouchPhase phase) 
     {
-        //Debug.Log("it can do this 2");
-
-        //only enable when there is 1 finger on screen
-        //if (Input.touchCount == 1)
-        //{
-        //Debug.Log("it can do this");
-
-        //if mouse button is held down or player has place finger on screen, also if canPush is true
-        if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && !LevelManager.gameIsLost)
+        if(phase == TouchPhase.Began) 
         {
-            hasSwipe = false;
-            CreateWind(); //just creates a ribbon of the trail renderer
+            touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+            transform.position = new Vector3(touchPosition.x, touchPosition.y, 0);
+            trailRenderer.Clear();
         }
-        else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && !LevelManager.gameIsLost)
+        else if(phase == TouchPhase.Moved)
         {
-            hasSwipe = true;
+            trailRenderer.emitting = true;
+            touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+            transform.position = new Vector3(touchPosition.x, touchPosition.y, 0);        
         }
-        //}
+        else if(phase == TouchPhase.Ended || phase == TouchPhase.Canceled)
+        {
+            trailRenderer.emitting = false;
+        }
+    }
+
+    // Renamed WindControls() to HandlePlayerInput() so it is more descriptive.
+    void HandlePlayerInput()
+    {
+        
+        // If we have lost the game, don't process player input anymore.
+        if(LevelManager.gameIsLost) return;
+
+        if(Input.touchCount > 0)
+        {
+            Touch t = Input.GetTouch(0);
+            UpdateTrailRenderer(t.phase);
+        }
+        else 
+        {
+            // If we are using mouse, map the mouse button events to TouchPhase events.
+            if(Input.GetMouseButtonDown(0))
+            {
+                UpdateTrailRenderer(TouchPhase.Began);
+            }
+            else if(Input.GetMouseButton(0))
+            {
+                UpdateTrailRenderer(TouchPhase.Moved);
+            }
+            else if(Input.GetMouseButtonUp(0))
+            {
+                UpdateTrailRenderer(TouchPhase.Ended);
+            }
+        }
     }
         #endregion
  }

@@ -67,7 +67,7 @@ public class PlayerForces : MonoBehaviour
         {
             playerRb.velocity = new Vector2(forceMultiplyer * direction.x, forceMultiplyer * direction.y);
 
-            Debug.Log("Balloon is following player commands");
+            //Debug.Log("Balloon is following player commands");
         }
         else if (theBalloon.hasPop || !LevelManager.runGame)
         {
@@ -83,24 +83,41 @@ public class PlayerForces : MonoBehaviour
         //only enable when there is 1 finger on screen
         //if (Input.touchCount == 1)
         //{
-        if (LevelManager.runGame == true)
+        if (LevelManager.runGame)
         {
-            //when mouse button is pressed down
-            if ((Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)))
-            {
-                startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
 
-            //when mouse button is pressed up
-            else if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)))
+            // From Terence: Cleaned up the code by breaking the if condition into a few blocks.
+            if(Input.touchCount > 0)
             {
-                endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                // Store the Touch so that you don't have to keep retrieving it whenever you want
+                // to check it.
+                Touch t = Input.GetTouch(0);
+
+                // When touch / mouse is started.
+                if (t.phase == TouchPhase.Began)
+                {
+                    startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                }
+                // When touch / mouse is released.
+                else if (t.phase == TouchPhase.Ended || t.phase == TouchPhase.Canceled)
+                {
+                    endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                }
+
+            } else {
+
+                // If there is no touch input, listen for mouse clicks.
+                if(Input.GetMouseButtonDown(0)) {
+                    startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                }
+                else if(Input.GetMouseButtonUp(0))
+                {
+                    endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                }
             }
 
             direction = endPos - startPos; //find the dist between end and start positions
-        }
-       // }
-        
+        }        
     }
 
     /*IEnumerator RunGame()

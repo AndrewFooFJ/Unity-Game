@@ -19,7 +19,7 @@ public class WinFlag : MonoBehaviour
 
         if (!theUnlockableCrate)
         {
-            Debug.Log("cant find crate");
+            Debug.LogWarning("The UnlockCrate object is not found on this level.");
         }
     }
 
@@ -47,6 +47,10 @@ public class WinFlag : MonoBehaviour
 
     void UnlockCrate()
     {
-        PlayerPrefs.SetInt(theUnlockableCrate.playerprefName, 1);
+        // Only run this if theUnlockableCrate exists.
+        if(theUnlockableCrate)
+        {
+            PlayerPrefs.SetInt(theUnlockableCrate.playerprefName, 1);
+        }
     }
 }

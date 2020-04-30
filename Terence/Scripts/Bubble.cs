@@ -8,10 +8,12 @@ public class Bubble : MonoBehaviour {
     LineRenderer lineRenderer;
     DistanceJoint2D joint;
     new Rigidbody2D rigidbody;
+    new SpriteRenderer renderer;
 
-    // For calculating volume.
+    // Private variables for storing some attributes.
     new Collider2D collider;
     Vector2 originalBounds;
+    Color originalColor;
     
     public Camera targetCamera;
 
@@ -26,11 +28,15 @@ public class Bubble : MonoBehaviour {
 
     bool isInflating = false;
 
+    [Header("Visuals")]
+    public GameObject popEffect;
+
     void Start() {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.useWorldSpace = true;
         joint = GetComponent<DistanceJoint2D>();
         rigidbody = GetComponent<Rigidbody2D>();
+        renderer = GetComponent<SpriteRenderer>();
 
         collider = GetComponentInChildren<Collider2D>();
         if(volume <= 0) volume = CalculateVolume();
@@ -38,6 +44,7 @@ public class Bubble : MonoBehaviour {
 
         // Auto-populate camera if it is missing.
         targetCamera = targetCamera ?? Camera.main;
+        originalColor = renderer.color;
     }
 
     void Update() {
@@ -83,7 +90,7 @@ public class Bubble : MonoBehaviour {
     bool IsOver(Vector2 screenPoint) {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition),
                 point = collider.ClosestPoint(mousePos);
-        print(mousePos + " | " + point);
+        
         if(point == mousePos) {
             return true;
         }
@@ -109,6 +116,15 @@ public class Bubble : MonoBehaviour {
         // Limits the volume of the balloon.
         if(volume > maximumVolume) {
             Destroy(gameObject);
+            if(popEffect) Instantiate(popEffect,transform.position,transform.rotation);
+        } else {
+            float threshold = maximumVolume - boostVolume * 2;
+            if(volume > threshold) {
+                Color danger = (originalColor + Color.red) / 2f;
+                renderer.color = Color.Lerp(originalColor, danger, Mathf.InverseLerp(threshold,maximumVolume,volume));
+            } else {
+                renderer.color = originalColor;
+            }
         }
 
         // Reverse engineers the volume equation to get the scale.

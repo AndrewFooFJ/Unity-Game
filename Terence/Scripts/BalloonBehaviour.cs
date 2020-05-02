@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(DistanceJoint2D),typeof(LineRenderer),typeof(Rigidbody2D))]
-public class Bubble : MonoBehaviour {
+public class BalloonBehaviour : MonoBehaviour {
 
     LineRenderer lineRenderer;
     DistanceJoint2D joint;
     new Rigidbody2D rigidbody;
     new SpriteRenderer renderer;
+    new AudioSource audio;
 
     // Private variables for storing some attributes.
     new Collider2D collider;
@@ -21,15 +23,17 @@ public class Bubble : MonoBehaviour {
     public float volume;
     public float minimumVolume = 0.24f, maximumVolume = 2f;
     public float volumeLossRate = 0.03f, volumeGainRate = 0.1f;
-    public float boostVolume = 1.4f;
+    public float boostVolume = 1.4f, boostNudgeForce = 1f;
 
     public enum Mode { boost, gradual }
     public Mode controlMode;
 
     bool isInflating = false;
+    protected bool isDead = false;
 
-    [Header("Visuals")]
+    [Header("Aesthetics")]
     public GameObject popEffect;
+    public AudioClip popSound, inflateSound;
 
     void Start() {
         lineRenderer = GetComponent<LineRenderer>();
@@ -37,6 +41,7 @@ public class Bubble : MonoBehaviour {
         joint = GetComponent<DistanceJoint2D>();
         rigidbody = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
+        audio = GetComponent<AudioSource>();
 
         collider = GetComponentInChildren<Collider2D>();
         if(volume <= 0) volume = CalculateVolume();
@@ -105,6 +110,24 @@ public class Bubble : MonoBehaviour {
         return 0;
     }
 
+    // What happens when the bubble pops.
+    public void Death() {
+        if(isDead) return;
+
+        isDead = true;
+        Destroy(gameObject,popSound.length);
+        if(popEffect) Instantiate(popEffect,transform.position,transform.rotation);
+        if(popSound) {
+            audio.PlayOneShot(popSound);
+            Destroy(gameObject,popSound.length);
+            renderer.enabled = false;
+            rigidbody.simulated = false;
+            collider.enabled = false;
+            return;
+        }
+        Destroy(gameObject);
+    }
+
     // Updates the scale of the object based on its volume.
     public void UpdateVolume() {
         if(originalBounds.sqrMagnitude <= 0)
@@ -115,8 +138,7 @@ public class Bubble : MonoBehaviour {
 
         // Limits the volume of the balloon.
         if(volume > maximumVolume) {
-            Destroy(gameObject);
-            if(popEffect) Instantiate(popEffect,transform.position,transform.rotation);
+            Death();
         } else {
             float threshold = maximumVolume - boostVolume * 2;
             if(volume > threshold) {
@@ -140,7 +162,13 @@ public class Bubble : MonoBehaviour {
     public IEnumerator Boost(float addedVolume, float duration = 0.25f) {
         float time = 0;
         WaitForEndOfFrame w = new WaitForEndOfFrame();
+
+        // Add the nudge force too.
+        rigidbody.AddForce(Vector2.up * boostNudgeForce, ForceMode2D.Impulse);
         
+        // Play inflation sound.
+        if(inflateSound) audio.PlayOneShot(inflateSound);
+
         while(time < duration) {
             yield return w;
 

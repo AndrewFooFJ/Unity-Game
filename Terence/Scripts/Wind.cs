@@ -5,17 +5,17 @@ using UnityEngine;
 public class Wind : MonoBehaviour {
 
     ParticleSystem particles;
-    new BoxCollider2D collider;
     public float force = 1f;
+    public BoxCollider2D[] affectedZones;
 
     // Start is called before the first frame update
     void Start() {
         particles = GetComponent<ParticleSystem>();
 
         // Initialises collider.
-        collider = gameObject.AddComponent<BoxCollider2D>();
-        collider.isTrigger = true;
-        UpdateCollider();
+        //collider = gameObject.AddComponent<BoxCollider2D>();
+        //collider.isTrigger = true;
+        //UpdateCollider();
     }
 
     // Update is called once per frame
@@ -53,11 +53,24 @@ public class Wind : MonoBehaviour {
                 break;
         }
 
-        collider.size = new Vector2(startSpeed * startLifetime, particles.shape.radius * 2f);
-        collider.offset = new Vector2(collider.size.x * 0.5f, 0);
+        //collider.size = new Vector2(startSpeed * startLifetime, particles.shape.radius * 2f);
+        //collider.offset = new Vector2(collider.size.x * 0.5f, 0);
+
+        // Divides the Trail component of the particles by the lifetime,
+        // so that the trail is always the same length regardless of length of wind.
+        //ParticleSystem.TrailModule trails = particles.trails;
+        //ParticleSystem.MinMaxCurve trailLifetimeCurve = trails.lifetime;
+        //trailLifetimeCurve.constant /= startLifetime;
+        //trailLifetimeCurve.constantMin /= startLifetime;
+        //trailLifetimeCurve.constantMax /= startLifetime;
+        //trails.lifetime = trailLifetimeCurve;
     }
 
     void OnTriggerStay2D(Collider2D other) {
-        other.attachedRigidbody.AddForce(Vector2.right * force);
+        for(int i=0; i<affectedZones.Length; i++) {
+            if(affectedZones[i].IsTouching(other)) {
+                other.attachedRigidbody.AddForce(force * affectedZones[i].transform.right);
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if(levelStarted) {
-            print(remainingTime);
+            //print(remainingTime);
             remainingTime -= Time.deltaTime;
             UpdateUI();
         }

@@ -19,6 +19,9 @@ public class BalloonBehaviour : MonoBehaviour {
     
     public Camera targetCamera;
 
+    [Header("Controls")]
+    public float doubleClickThreshold = 0.2f;
+
     [Header("Buoyancy")]
     public float volume;
     public float minimumVolume = 0.24f, maximumVolume = 2f;
@@ -27,9 +30,18 @@ public class BalloonBehaviour : MonoBehaviour {
 
     public enum Mode { boost, gradual }
     public Mode controlMode;
+    public bool stopLossWhenInflating = true;
 
     bool isInflating = false;
     protected bool isDead = false;
+
+    // Nested class for storing the last click on balloon.
+    public class Click {
+        public float startTime, duration = 0f;
+        public bool isActive = true;
+    }
+    List<Click> clicks = new List<Click>(2); // Record of clicks made.
+    const int CLICK_LIST_LENGTH = 2;
 
     [Header("Aesthetics")]
     public GameObject popEffect;
@@ -57,10 +69,12 @@ public class BalloonBehaviour : MonoBehaviour {
         lineRenderer.SetPosition(1, joint.connectedBody.transform.TransformPoint(joint.connectedAnchor));
 
         // Reduce the volume every frame by the volume loss rate.
-        if(volume > minimumVolume) volume = Mathf.Max(minimumVolume, volume - Mathf.Max(0,volumeLossRate) * Time.deltaTime);
+        if(volume > minimumVolume && !(isInflating && stopLossWhenInflating))
+            volume = Mathf.Max(minimumVolume, volume - Mathf.Max(0,volumeLossRate) * Time.deltaTime);
 
         // If it is supposed to be inflating, then inflate it.
-        if(isInflating) volume += volumeGainRate * Time.deltaTime;
+        if(isInflating && controlMode == Mode.gradual)
+            volume += volumeGainRate * Time.deltaTime;
 
         UpdateVolume();
 
@@ -69,19 +83,32 @@ public class BalloonBehaviour : MonoBehaviour {
 
     void HandleInput() {
         if(Input.GetMouseButtonDown(0)) {
+
+            // Limit length of clicks.
+            if(clicks.Count == CLICK_LIST_LENGTH) clicks.RemoveAt(0);
+            clicks.Add(new Click { startTime = Time.time });
+
             // Handles left click down.
             if(IsOver(Input.mousePosition)) {
-                switch(controlMode) {
-                    case Mode.boost:
-                        isInflating = false;
-                        StartCoroutine(Boost(boostVolume));
-                        break;
-                    case Mode.gradual:
-                        isInflating = true;
-                        break;
+
+                // Burst the balloon if it is a double click.
+                if(IsDoubleClick()) Death();
+                else {
+                    switch(controlMode) {
+                        case Mode.boost:
+                            isInflating = false;
+                            StartCoroutine(Boost(boostVolume));
+                            break;
+                        case Mode.gradual:
+                            isInflating = true;
+                            break;
+                    }
                 }
             }
         } else if(Input.GetMouseButtonUp(0)) {
+
+            clicks[clicks.Count - 1].isActive = false;
+
             // Left click up.
             switch(controlMode) {
                 case Mode.gradual:
@@ -89,6 +116,21 @@ public class BalloonBehaviour : MonoBehaviour {
                     break;
             }
         }
+
+        // Update the current click duration if any.
+        if(clicks.Count > 0) {
+            clicks[clicks.Count - 1].duration += Time.deltaTime;
+        }
+    }
+
+    // Check the clicks array to see if we have a double click.
+    bool IsDoubleClick() {
+        int count = clicks.Count;
+        if(count > 1) {
+            if(clicks[count-1].startTime + clicks[count-1].duration - clicks[count-2].startTime <= doubleClickThreshold)
+                return true;
+        }
+        return false;
     }
 
     // Is our balloon over a particular point on the screen?
@@ -169,6 +211,8 @@ public class BalloonBehaviour : MonoBehaviour {
         // Play inflation sound.
         if(inflateSound) audio.PlayOneShot(inflateSound);
 
+        isInflating = true; // Set flag to stop volume loss.
+
         while(time < duration) {
             yield return w;
 
@@ -180,6 +224,8 @@ public class BalloonBehaviour : MonoBehaviour {
             // Scale up the balloon.
             volume += Mathf.Lerp(0,addedVolume,delta / duration);
         }
+
+        isInflating = false; // Set flag to stop volume loss.
     }
 
 }

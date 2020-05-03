@@ -457,6 +457,21 @@ PrefabInstance:
       propertyPath: boostNudgeForce
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3036618062249276115, guid: 87f74566e05df254a8889b575c15a967,
+        type: 3}
+      propertyPath: controlMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036618062249276115, guid: 87f74566e05df254a8889b575c15a967,
+        type: 3}
+      propertyPath: volumeLossRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036618062249276115, guid: 87f74566e05df254a8889b575c15a967,
+        type: 3}
+      propertyPath: volumeGainRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87f74566e05df254a8889b575c15a967, type: 3}
 --- !u!1 &625009627

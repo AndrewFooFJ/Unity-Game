@@ -11,6 +11,9 @@ public class GameCameraBehaviour : MonoBehaviour {
 
     public enum MovementMode { lerp, constant }
     public MovementMode movementMode;
+
+    [HideInInspector] public Vector3 destination { get; protected set; }
+
     // Start is called before the first frame update
     void Start() {
         
@@ -18,7 +21,9 @@ public class GameCameraBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Vector3 destination = Vector3.zero;
+        if(!isFollowing) return;
+
+        destination = Vector3.zero;
         for(int i = 0; i < targets.Length; i++) destination += targets[i].position;
         destination /= targets.Length;
 
@@ -39,5 +44,15 @@ public class GameCameraBehaviour : MonoBehaviour {
                 );
                 break;
         }
+    }
+
+    public float SqrDistanceToTarget() {
+        Vector2 v = transform.position - destination;
+        return v.sqrMagnitude;
+    }
+
+    public float DistanceToTarget() {
+        Vector2 v = transform.position - destination;
+        return v.magnitude;
     }
 }

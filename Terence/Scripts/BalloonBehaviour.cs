@@ -21,6 +21,7 @@ public class BalloonBehaviour : MonoBehaviour {
 
     [Header("Controls")]
     public float doubleClickThreshold = 0.2f;
+    public bool fullscreenClick = false;
 
     [Header("Buoyancy")]
     public float volume;
@@ -135,6 +136,9 @@ public class BalloonBehaviour : MonoBehaviour {
 
     // Is our balloon over a particular point on the screen?
     bool IsOver(Vector2 screenPoint) {
+
+        if(fullscreenClick) return true;
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition),
                 point = collider.ClosestPoint(mousePos);
         

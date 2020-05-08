@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -18,6 +19,7 @@ public class BalloonBehaviour : MonoBehaviour {
     Color originalColor;
     
     public Camera targetCamera;
+    public CargoBehaviour cargo;
 
     [Header("Controls")]
     public float doubleClickThreshold = 0.2f;
@@ -27,11 +29,11 @@ public class BalloonBehaviour : MonoBehaviour {
     public float volume;
     public float minimumVolume = 0.24f, maximumVolume = 2f;
     public float volumeLossRate = 0.03f, volumeGainRate = 0.1f;
-    public float boostVolume = 1.4f, boostNudgeForce = 1f;
+    public float boostVolume = 1.4f, boostNudgeForce = 1f, density = 1.4f;
 
     public enum Mode { boost, gradual }
-    public Mode controlMode;
-    public bool stopLossWhenInflating = true;
+    public Mode controlMode = Mode.gradual;
+    public bool stopLossWhenInflating = true, calculateMass = false;
 
     bool isInflating = false;
     protected bool isDead = false;
@@ -46,7 +48,7 @@ public class BalloonBehaviour : MonoBehaviour {
 
     [Header("Aesthetics")]
     public GameObject popEffect;
-    public AudioClip popSound, inflateSound;
+    public AudioClip[] popSound, popWarnSound, boostSound, inflatingSound;
 
     void Start() {
         lineRenderer = GetComponent<LineRenderer>();
@@ -63,9 +65,14 @@ public class BalloonBehaviour : MonoBehaviour {
         // Auto-populate camera if it is missing.
         targetCamera = targetCamera ?? Camera.main;
         originalColor = renderer.color;
+
+        // Search for a cargo object if there are no others.
+        cargo = cargo ?? FindObjectOfType<CargoBehaviour>();
     }
 
     void Update() {
+        if(isDead) return;
+
         lineRenderer.SetPosition(0, transform.TransformPoint(joint.anchor));
         lineRenderer.SetPosition(1, joint.connectedBody.transform.TransformPoint(joint.connectedAnchor));
 
@@ -83,6 +90,9 @@ public class BalloonBehaviour : MonoBehaviour {
     }
 
     void HandleInput() {
+        // Disable input.
+        if(GameManager.instance.levelState != GameManager.LevelState.inGame) return;
+
         if(Input.GetMouseButtonDown(0)) {
 
             // Limit length of clicks.
@@ -93,7 +103,7 @@ public class BalloonBehaviour : MonoBehaviour {
             if(IsOver(Input.mousePosition)) {
 
                 // Burst the balloon if it is a double click.
-                if(IsDoubleClick()) Death();
+                if(IsDoubleClick()) cargo.Pop(this);
                 else {
                     switch(controlMode) {
                         case Mode.boost:
@@ -102,6 +112,13 @@ public class BalloonBehaviour : MonoBehaviour {
                             break;
                         case Mode.gradual:
                             isInflating = true;
+
+                            // Play the inflating sound effect.
+                            if(!audio.isPlaying && inflatingSound.Length > 0) {
+                                audio.clip = inflatingSound[Random.Range(0,inflatingSound.Length)];
+                                audio.loop = true;
+                                audio.Play();
+                            }
                             break;
                     }
                 }
@@ -115,6 +132,12 @@ public class BalloonBehaviour : MonoBehaviour {
                 case Mode.gradual:
                     isInflating = false;
                     break;
+            }
+
+            // Stop playing any audio on the balloon.
+            if(inflatingSound.Contains(audio.clip) && audio.isPlaying) {
+                audio.loop = false;
+                audio.Stop();
             }
         }
 
@@ -157,20 +180,30 @@ public class BalloonBehaviour : MonoBehaviour {
     }
 
     // What happens when the bubble pops.
+    // Call cargo.Pop() instead of Death() to trigger game over screen.
     public void Death() {
         if(isDead) return;
 
+        // Stop playing any audio on the balloon.
+        audio.loop = false;
+        audio.Stop();
+
         isDead = true;
-        Destroy(gameObject,popSound.length);
-        if(popEffect) Instantiate(popEffect,transform.position,transform.rotation);
-        if(popSound) {
-            audio.PlayOneShot(popSound);
-            Destroy(gameObject,popSound.length);
+
+        // Play death sounds and particle effects.
+        if(popSound.Length > 0) {
+            AudioClip popSfx = popSound[Random.Range(0,popSound.Length)];
+            if(popEffect) Instantiate(popEffect,transform.position,transform.rotation);
+
+            // Play the audio clip and disable the components.
+            audio.PlayOneShot(popSfx);
+            Destroy(gameObject,popSfx.length);
             renderer.enabled = false;
             rigidbody.simulated = false;
             collider.enabled = false;
             return;
         }
+
         Destroy(gameObject);
     }
 
@@ -184,15 +217,26 @@ public class BalloonBehaviour : MonoBehaviour {
 
         // Limits the volume of the balloon.
         if(volume > maximumVolume) {
-            Death();
+            cargo.Pop(this);
         } else {
             float threshold = maximumVolume - boostVolume * 2;
             if(volume > threshold) {
+                // Play the stretched sound.
+                if(renderer.color.Equals(originalColor) && popWarnSound.Length > 0) {
+                    audio.PlayOneShot(popWarnSound[Random.Range(0,popWarnSound.Length)]);
+                }
+
                 Color danger = (originalColor + Color.red) / 2f;
                 renderer.color = Color.Lerp(originalColor, danger, Mathf.InverseLerp(threshold,maximumVolume,volume));
             } else {
                 renderer.color = originalColor;
             }
+        }
+
+        // Update the mass of the balloon's Rigidbody.
+        if(calculateMass) {
+            rigidbody.useAutoMass = false;
+            rigidbody.mass = density * volume;
         }
 
         // Reverse engineers the volume equation to get the scale.
@@ -213,7 +257,7 @@ public class BalloonBehaviour : MonoBehaviour {
         rigidbody.AddForce(Vector2.up * boostNudgeForce, ForceMode2D.Impulse);
         
         // Play inflation sound.
-        if(inflateSound) audio.PlayOneShot(inflateSound);
+        if(boostSound.Length > 0) audio.PlayOneShot(boostSound[Random.Range(0,boostSound.Length)]);
 
         isInflating = true; // Set flag to stop volume loss.
 

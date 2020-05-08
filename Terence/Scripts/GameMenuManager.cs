@@ -10,23 +10,64 @@ public class GameMenuManager : MonoBehaviour {
 
     public static GameMenuManager instance;
 
+    [Header("Scenes")]
     public string levelSelectScene;
+    public string nextLevelScene;
 
     [Header("Menus")]
     public GameObject overlay;
-    public GameObject basicMenu;
-    public GameObject completeMenu;
+    public GameObject basicMenu, completeMenu;
+    Transform stars;
 
-    public void Open(string menuType, float displayDelay = 0f) {
+    [Header("Resources")]
+    public Sprite starEmpty;
+    public Sprite starFull;
+    public AudioClip starJingle, levelCompleteJingle;
+
+    public const float STARS_ITERATE_DELAY = 0.4f;
+
+    public IEnumerator SetStars(int count) {
+        if(completeMenu.activeSelf) {
+            stars = completeMenu.transform.Find("Stars");
+            print(stars);
+            for(int i = 0; i < count; i++) {
+                // Starts playing the particle system on the star.
+                Transform s = stars.GetChild(i);
+                ParticleSystem p = s.GetComponent<ParticleSystem>();
+                p.Play(true);
+
+                yield return new WaitForSecondsRealtime(p.main.duration - 0.1f);
+
+                // Get the star to light up.
+                Image img = s.GetComponent<Image>();
+                img.sprite = starFull;
+
+                // Play the audio for star jingle.
+                GameManager.instance.audio.PlayOneShot(starJingle);
+
+                yield return new WaitForSecondsRealtime(STARS_ITERATE_DELAY);
+            }
+        }
+    }
+
+    // For hooking to buttons.
+    public void Open(string menuType) {
+        overlay.SetActive(false); // Disables the overlay.
+        gameObject.SetActive(true);
+        StartCoroutine(Open(0f, menuType));
+    }
+
+    public void Open(string menuType, float displayDelay, int stars = 3) {
         overlay.SetActive(false); // Disables the overlay.
         gameObject.SetActive(true);
         StartCoroutine(Open(displayDelay, menuType));
     }
 
-    public IEnumerator Open(float displayDelay, string menuType) {
+    public IEnumerator Open(float displayDelay, string menuType, int stars = 3) {
         if(displayDelay > 0) yield return new WaitForSeconds(displayDelay);
 
         overlay.SetActive(true);
+        OnEnable();
 
         switch(menuType) {
             case "Paused":
@@ -41,6 +82,9 @@ public class GameMenuManager : MonoBehaviour {
             case "Level Complete":
                 if(basicMenu) basicMenu.SetActive(false);
                 if(completeMenu) completeMenu.SetActive(true);
+
+                if(stars > 0) StartCoroutine(SetStars(stars));
+                if(levelCompleteJingle) GetComponent<AudioSource>().PlayOneShot(levelCompleteJingle);
                 break;
         }
     }
@@ -51,7 +95,7 @@ public class GameMenuManager : MonoBehaviour {
 
     public void Replay() {
         gameObject.SetActive(false);
-        SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
+        SceneManager.LoadScene( SceneManager.GetActiveScene().name );
     }
 
     public void ToLevelSelect() {
@@ -75,5 +119,14 @@ public class GameMenuManager : MonoBehaviour {
         else instance = this;
 
         gameObject.SetActive(false);
+    }
+
+    // Autofill these fields.
+    void Reset() {
+        overlay = transform.Find("Overlay").gameObject;
+        if(overlay) {
+            basicMenu = overlay.transform.Find("BasicMenu").gameObject;
+            completeMenu = overlay.transform.Find("CompleteMenu").gameObject;
+        }
     }
 }

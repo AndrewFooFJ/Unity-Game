@@ -293,7 +293,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 3036618062249276113}
   m_Enabled: 1
   m_Density: 1.1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ade7863cc4ee1a44999e9a8eb7f8f3fc, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -346,7 +346,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 1.1533308
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: -1
   m_Material: {fileID: 0}
@@ -506,14 +506,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 0}
+  doubleClickThreshold: 0.2
+  fullscreenClick: 1
   volume: 0
   minimumVolume: 0.24
   maximumVolume: 2.8
   volumeLossRate: 0.7
-  volumeGainRate: 1.2
+  volumeGainRate: 1
   boostVolume: 0.8
-  boostNudgeForce: 1.5
-  controlMode: 0
+  boostNudgeForce: 2
+  density: 1.25
+  controlMode: 1
+  stopLossWhenInflating: 1
+  calculateMass: 1
   popEffect: {fileID: 7157587105696521147, guid: fc761ae7c159e824e942415c549229f4,
     type: 3}
   popSound: {fileID: 8300000, guid: 0274b65b9542b634eaca53564a725949, type: 3}
@@ -529,7 +534,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

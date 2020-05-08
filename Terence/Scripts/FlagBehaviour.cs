@@ -13,11 +13,14 @@ public class FlagBehaviour : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Box")) {
+        CargoBehaviour cargo = other.GetComponent<CargoBehaviour>();
+        if(cargo) {
             particles.Play();
             animator.SetBool("Open",true);
 
+            // Run this first to set the game state to victory.
             GameManager.instance.NotifyVictory();
+            cargo.Pop();
         }
     }
 }

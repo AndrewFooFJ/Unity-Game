@@ -14,19 +14,25 @@ public class GameManager : MonoBehaviour {
     public Transform player, goal;
 
     Camera camera;
+    [HideInInspector] public new AudioSource audio; // Public to allow other objects to play sounds.
 
     [System.Serializable]
     public struct UIElements {
+        public GameObject HUD;
         public Text remainingTime, distanceToObjective;
         public Image objectivePointer;
         public Sprite objectivePointerNear;
-        public float screenMargin;
+        public Vector2 screenMargin;
         internal Sprite objectivePointerSprite;
     }
+
+    [Header("UI & SFX")]
     public UIElements HUDElements;
 
     float remainingTime;
-    [HideInInspector] public bool levelStarted = true;
+    
+    public enum LevelState { preGame, inGame, victory, defeat }
+    public LevelState levelState { get; protected set; } = LevelState.preGame;
 
     // Start is called before the first frame update
     void Start() {
@@ -35,10 +41,12 @@ public class GameManager : MonoBehaviour {
 
         remainingTime = completionTimes[2];
         camera = cameraBehaviour.GetComponent<Camera>();
+        audio = cameraBehaviour.GetComponent<AudioSource>() ?? GetComponent<AudioSource>();
 
         HUDElements.objectivePointerSprite = HUDElements.objectivePointer.sprite;
         UpdateUI();
 
+        levelState = LevelState.preGame;
         StartCoroutine(GameBeginCoroutine());
     }
 
@@ -47,25 +55,29 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(startDelay);
         cameraBehaviour.isFollowing = true;
 
-        // Wait until we are close to the target.
+        // Detect when we are close to the target, so that we can start the game.
         WaitForEndOfFrame w = new WaitForEndOfFrame();
-        float dist = cameraBehaviour.moveSpeed / Time.fixedDeltaTime;
-        print(dist);
+        float dist = 0.8f;
         while(cameraBehaviour.SqrDistanceToTarget() > dist) {
             yield return w;
         }
-
+        
         // Set camera behaviour.
         cameraBehaviour.movementMode = GameCameraBehaviour.MovementMode.lerp;
+
+        // Start the level.
+        levelState = LevelState.inGame;
     }
 
     // Update is called once per frame
     void Update() {
-        if(levelStarted) {
-            //print(remainingTime);
-            remainingTime -= Time.deltaTime;
-            UpdateUI();
+        if(levelState == LevelState.inGame) {
+            remainingTime = Mathf.Max(0,remainingTime - Time.deltaTime);
+            if(remainingTime <= 0) {
+                NotifyDefeat();
+            }
         }
+        UpdateUI();
     }
 
     void UpdateUI() {
@@ -85,20 +97,38 @@ public class GameManager : MonoBehaviour {
         // Move the objective marker.
         HUDElements.objectivePointer.transform.position = new Vector3(
             Mathf.Max(
-                0 + HUDElements.screenMargin,
-                Mathf.Min(Screen.width - HUDElements.screenMargin,screenPoint.x)
+                0 + HUDElements.screenMargin.x,
+                Mathf.Min(Screen.width - HUDElements.screenMargin.x,screenPoint.x)
             ),
             Mathf.Max(
-                0 + HUDElements.screenMargin,
-                Mathf.Min(Screen.height - HUDElements.screenMargin,screenPoint.y)
+                0 + HUDElements.screenMargin.y,
+                Mathf.Min(Screen.height - HUDElements.screenMargin.y,screenPoint.y)
             ),
             0
         );
     }
 
-    public void NotifyVictory() {
+    public void NotifyDefeat() {
+        
+        if(levelState != LevelState.inGame) return;
+
+        // Turns off the HUD and opens the game over screen.
         HUDElements.objectivePointer.gameObject.SetActive(false);
-        GameMenuManager.instance.Open("Level Complete", 3f);
-        levelStarted = false;
+        HUDElements.HUD.SetActive(false);
+        GameMenuManager.instance.Open("Game Over", 1.2f);
+        levelState = LevelState.defeat;
+
+        // Pop the player's balloon.
+        CargoBehaviour cargo = player.GetComponent<CargoBehaviour>();
+        if(cargo) cargo.Pop();
+    }
+
+    public void NotifyVictory() {
+        if(levelState != LevelState.inGame) return;
+
+        levelState = LevelState.victory;
+        HUDElements.objectivePointer.gameObject.SetActive(false);
+        HUDElements.HUD.SetActive(false);
+        GameMenuManager.instance.Open("Level Complete", 2f);
     }
 }

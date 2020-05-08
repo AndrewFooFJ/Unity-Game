@@ -29,7 +29,6 @@ public class GameMenuManager : MonoBehaviour {
     public IEnumerator SetStars(int count) {
         if(completeMenu.activeSelf) {
             stars = completeMenu.transform.Find("Stars");
-            print(stars);
             for(int i = 0; i < count; i++) {
                 // Starts playing the particle system on the star.
                 Transform s = stars.GetChild(i);
@@ -43,10 +42,12 @@ public class GameMenuManager : MonoBehaviour {
                 img.sprite = starFull;
 
                 // Play the audio for star jingle.
+                GameManager.instance.audio.pitch = 0.7f + 0.18f * i;
                 GameManager.instance.audio.PlayOneShot(starJingle);
 
                 yield return new WaitForSecondsRealtime(STARS_ITERATE_DELAY);
             }
+            GameManager.instance.audio.pitch = 1f;
         }
     }
 
@@ -84,7 +85,7 @@ public class GameMenuManager : MonoBehaviour {
                 if(completeMenu) completeMenu.SetActive(true);
 
                 if(stars > 0) StartCoroutine(SetStars(stars));
-                if(levelCompleteJingle) GetComponent<AudioSource>().PlayOneShot(levelCompleteJingle);
+                if(levelCompleteJingle) GameManager.instance.audio.PlayOneShot(levelCompleteJingle);
                 break;
         }
     }

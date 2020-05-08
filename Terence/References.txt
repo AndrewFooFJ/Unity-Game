@@ -1,5 +1,8 @@
 UI Buttons from:
 https://opengameart.org/content/ui-pack-rpg-extension
 
-Balloon-Squeaky.wav:
+Balloon-Squeaky.wav (Attribution 3.0):
 http://soundbible.com/1111-Balloon-Squeaky.html
+
+Victory-Rainbow.wav (Public Domain):
+http://soundbible.com/1793-Flashbang.html

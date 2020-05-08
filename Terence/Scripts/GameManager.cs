@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour {
         // Turns off the HUD and opens the game over screen.
         HUDElements.objectivePointer.gameObject.SetActive(false);
         HUDElements.HUD.SetActive(false);
-        GameMenuManager.instance.Open("Game Over", 1.2f);
+        GameMenuManager.instance.Open("Game Over", 6f);
         levelState = LevelState.defeat;
 
         // Pop the player's balloon.

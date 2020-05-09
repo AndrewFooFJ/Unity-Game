@@ -437,7 +437,11 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.03
@@ -460,7 +464,7 @@ LineRenderer:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -468,7 +472,7 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -506,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 0}
+  cargo: {fileID: 0}
   doubleClickThreshold: 0.2
   fullscreenClick: 1
   volume: 0
@@ -515,14 +520,24 @@ MonoBehaviour:
   volumeGainRate: 1
   boostVolume: 0.8
   boostNudgeForce: 2
-  density: 1.25
+  density: 1.4
   controlMode: 1
   stopLossWhenInflating: 1
   calculateMass: 1
   popEffect: {fileID: 7157587105696521147, guid: fc761ae7c159e824e942415c549229f4,
     type: 3}
-  popSound: {fileID: 8300000, guid: 0274b65b9542b634eaca53564a725949, type: 3}
-  inflateSound: {fileID: 8300000, guid: 47da1444f6c3c604cb215e0006a4e18e, type: 3}
+  popSound:
+  - {fileID: 8300000, guid: 0274b65b9542b634eaca53564a725949, type: 3}
+  popWarnSound:
+  - {fileID: 8300000, guid: 4b7dd550d57035749bf7df12162b8238, type: 3}
+  boostSound:
+  - {fileID: 8300000, guid: 47da1444f6c3c604cb215e0006a4e18e, type: 3}
+  inflatingSound:
+  - {fileID: 8300000, guid: 395f027882427e441ad58d5c94b98679, type: 3}
+  pullDirectionUI:
+    baseColor: {r: 1, g: 1, b: 1, a: 1}
+    upColor: {r: 0, g: 1, b: 0, a: 1}
+    downColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!82 &723651790
 AudioSource:
   m_ObjectHideFlags: 0

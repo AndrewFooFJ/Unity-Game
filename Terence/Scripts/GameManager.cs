@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
         if(levelState == LevelState.inGame) {
             remainingTime = Mathf.Max(0,remainingTime - Time.deltaTime);
             if(remainingTime <= 0) {
-                NotifyDefeat();
+                NotifyDefeat(1f);
             }
         }
         UpdateUI();
@@ -90,8 +90,15 @@ public class GameManager : MonoBehaviour {
         if(screenPoint.x < Screen.width && screenPoint.x > 0 && screenPoint.y > 0 && screenPoint.y < Screen.height) {
             HUDElements.objectivePointer.sprite = HUDElements.objectivePointerNear;
             screenPoint = new Vector3(screenPoint.x, screenPoint.y + 90f, screenPoint.z);
+
+            // Nulls any rotation when we are near.
+            HUDElements.objectivePointer.transform.rotation = Quaternion.identity;
         } else {
             HUDElements.objectivePointer.sprite = HUDElements.objectivePointerSprite;
+
+            // Rotate it to point to the objective.
+            Vector2 diff = goal.position - transform.position;
+            HUDElements.objectivePointer.transform.rotation = Quaternion.Euler(0,0,Mathf.Atan2(diff.y,diff.x) * Mathf.Rad2Deg);
         }
 
         // Move the objective marker.
@@ -108,14 +115,14 @@ public class GameManager : MonoBehaviour {
         );
     }
 
-    public void NotifyDefeat() {
+    public void NotifyDefeat(float delay = 4f) {
         
         if(levelState != LevelState.inGame) return;
 
         // Turns off the HUD and opens the game over screen.
         HUDElements.objectivePointer.gameObject.SetActive(false);
         HUDElements.HUD.SetActive(false);
-        GameMenuManager.instance.Open("Game Over", 6f);
+        GameMenuManager.instance.Open("Game Over", delay);
         levelState = LevelState.defeat;
 
         // Pop the player's balloon.
@@ -123,12 +130,12 @@ public class GameManager : MonoBehaviour {
         if(cargo) cargo.Pop();
     }
 
-    public void NotifyVictory() {
+    public void NotifyVictory(float delay = 2f) {
         if(levelState != LevelState.inGame) return;
 
         levelState = LevelState.victory;
         HUDElements.objectivePointer.gameObject.SetActive(false);
         HUDElements.HUD.SetActive(false);
-        GameMenuManager.instance.Open("Level Complete", 2f);
+        GameMenuManager.instance.Open("Level Complete", delay);
     }
 }

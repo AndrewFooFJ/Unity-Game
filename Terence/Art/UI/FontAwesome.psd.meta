@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: -3610134712018054089
     second: FontAwesome_6
+  - first:
+      213: 2510337059453922009
+    second: FontAwesome_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -133,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0bb5b5cb425cc040afe4f43757c6536
+      spriteID: 810e88f243771294f87b2666ccc496fe
       internalID: 864882202170505046
       vertices: []
       indices: 
@@ -154,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4353a7682e8d1ae429a98d995dee0317
+      spriteID: 0d107a7b7cb77574b90acab0985b936b
       internalID: -1654887982975039029
       vertices: []
       indices: 
@@ -175,7 +178,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cb4616bb98e08848bf28734d09adeb2
+      spriteID: cf42e5e848f480649a8f65605950ba40
       internalID: -626945374392610772
       vertices: []
       indices: 
@@ -196,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c7d660dc8cee5e4197eec5187bd0f23
+      spriteID: e60be34ad4eb22e4b974d5e22f4e2239
       internalID: -4035349015832886406
       vertices: []
       indices: 
@@ -217,7 +220,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 091b041569e3d674da9df358db64e029
+      spriteID: 3aae349fd9276154f8b2e598ab7b60b0
       internalID: -551218894983243931
       vertices: []
       indices: 
@@ -238,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3966423a22bf2d44299d83be522b0970
+      spriteID: 36af7645895286e4ca3ee066a1294157
       internalID: -8913950816729951196
       vertices: []
       indices: 
@@ -259,8 +262,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fba84b45928084a4d9c5677a28461b3d
+      spriteID: 5d8473f40ef158343a0b75f4946d08e2
       internalID: -3610134712018054089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FontAwesome_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d866354682d37c46a2630fd3b111744
+      internalID: 2510337059453922009
       vertices: []
       indices: 
       edges: []

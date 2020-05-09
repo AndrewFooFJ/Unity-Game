@@ -50,6 +50,13 @@ public class BalloonBehaviour : MonoBehaviour {
     public GameObject popEffect;
     public AudioClip[] popSound, popWarnSound, boostSound, inflatingSound;
 
+    [System.Serializable]
+    public struct PullDirection {
+        public Color baseColor, upColor, downColor;
+    }
+    public PullDirection pullDirectionUI;
+    bool isPullAnimating = false;
+
     void Start() {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.useWorldSpace = true;
@@ -73,8 +80,7 @@ public class BalloonBehaviour : MonoBehaviour {
     void Update() {
         if(isDead) return;
 
-        lineRenderer.SetPosition(0, transform.TransformPoint(joint.anchor));
-        lineRenderer.SetPosition(1, joint.connectedBody.transform.TransformPoint(joint.connectedAnchor));
+        LineUpdate();
 
         // Reduce the volume every frame by the volume loss rate.
         if(volume > minimumVolume && !(isInflating && stopLossWhenInflating))
@@ -87,6 +93,90 @@ public class BalloonBehaviour : MonoBehaviour {
         UpdateVolume();
 
         HandleInput();
+    }
+
+    void LineUpdate() {
+        Vector3 origin = transform.TransformPoint(joint.anchor),
+                goal = joint.connectedBody.transform.TransformPoint(joint.connectedAnchor);
+
+        float lerpAmt = 1f / (lineRenderer.positionCount - 1);
+        for(int i=0;i < lineRenderer.positionCount;i++) {
+            lineRenderer.SetPosition(i, Vector3.Lerp(origin,goal,lerpAmt * i));
+        }
+
+        // Show the highlight to show where the force is pulling.
+        float vertical = Mathf.Abs(rigidbody.velocity.y);
+        if(vertical > 0.1f)
+            StartCoroutine(ShowPullFeedback(rigidbody.velocity, Mathf.Min(1.5f,1.5f - vertical / 3f)));        
+    }
+
+    // Shows feedback on whether the balloon is pulling up or down on the cargo.
+    IEnumerator ShowPullFeedback(Vector2 pullDirection, float duration = 1f) {
+        
+        if(isPullAnimating) yield break;
+        
+        isPullAnimating = true;
+
+        GradientColorKey start = new GradientColorKey(),
+                         backFramer = new GradientColorKey(),
+                         frontFramer = new GradientColorKey();
+
+        // Sets the gradient properties.
+        Color pullColor;
+        bool pullUp = pullDirection.y > 0;
+        if(pullUp) {
+            start.color = pullColor = pullDirectionUI.upColor;
+            backFramer.color = frontFramer.color = pullDirectionUI.baseColor;
+            start.time = backFramer.time = 0.999f;
+            frontFramer.time = 0.899f;
+        } else {
+            start.color = pullColor = pullDirectionUI.downColor;
+            backFramer.color = frontFramer.color = pullDirectionUI.baseColor;
+            start.time = backFramer.time = 0.001f;
+            frontFramer.time = 0.101f;
+        }
+
+        // Array we are going to modify before injecting into the gradient.
+        GradientColorKey[] colorKey = new GradientColorKey[5] {
+            new GradientColorKey {
+                color = pullDirectionUI.baseColor,
+                time = 0f
+            },
+            backFramer,
+            start,
+            frontFramer,
+            new GradientColorKey {
+                color = pullDirectionUI.baseColor,
+                time = 1f
+            }
+        };
+
+        // This is the timed loop.
+        WaitForEndOfFrame w = new WaitForEndOfFrame();
+        float elapsed = 0;
+        do {
+            yield return w;
+            elapsed += Time.deltaTime;
+            float ratio = elapsed / duration;
+            if(pullUp) ratio = 1 - ratio;
+
+            // Updates the gradient colors on the line renderer.
+            colorKey[1].time = Mathf.Clamp(ratio - 0.1f,0,1);
+            colorKey[2].time = ratio;
+            colorKey[3].time = Mathf.Clamp(ratio + 0.1f,0,1);
+            lineRenderer.colorGradient = new Gradient() { colorKeys = colorKey };
+        } while(elapsed < duration);
+
+        // Undo the shine on the line renderer.
+        isPullAnimating = false;
+        lineRenderer.colorGradient = new Gradient {
+            colorKeys = new GradientColorKey[1] {
+                new GradientColorKey {
+                    color = pullDirectionUI.baseColor,
+                    time = 0f
+                }
+            }
+        };
     }
 
     void HandleInput() {
@@ -125,7 +215,8 @@ public class BalloonBehaviour : MonoBehaviour {
             }
         } else if(Input.GetMouseButtonUp(0)) {
 
-            clicks[clicks.Count - 1].isActive = false;
+            if(clicks.Count > 0)
+                clicks[clicks.Count - 1].isActive = false;
 
             // Left click up.
             switch(controlMode) {

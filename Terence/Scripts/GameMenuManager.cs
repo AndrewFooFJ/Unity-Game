@@ -73,6 +73,10 @@ public class GameMenuManager : MonoBehaviour {
         switch(menuType) {
             case "Paused":
             case "Game Over":
+                // Prevent these screens from firing if we have won.
+                if(GameManager.instance.levelState == GameManager.LevelState.victory)
+                    yield break;
+
                 Text basicMenuTitle = basicMenu.GetComponentInChildren<Text>();
                 basicMenuTitle.text = menuType;
 

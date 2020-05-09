@@ -11,6 +11,7 @@ public class FlagBehaviour : MonoBehaviour {
     bool isActivated;
 
     public AudioClip activationSound;
+    public float audioVolume = 0.7f;
 
     void Start() {
         particles = GetComponent<ParticleSystem>();
@@ -26,7 +27,7 @@ public class FlagBehaviour : MonoBehaviour {
         if(cargo) {
             particles.Play();
             animator.SetBool("Open",isActivated = true);
-            audio.PlayOneShot(activationSound);
+            audio.PlayOneShot(activationSound, audioVolume);
 
             // Run this first to set the game state to victory.
             GameManager.instance.NotifyVictory();

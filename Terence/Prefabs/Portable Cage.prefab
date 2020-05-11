@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 890574807196023239}
   - component: {fileID: 890574807196023236}
   - component: {fileID: 1920033572}
+  - component: {fileID: 7348270718864270651}
   - component: {fileID: 1920033574}
   m_Layer: 0
   m_Name: Portable Cage
@@ -257,6 +258,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7348270718864270651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890574807196023258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4133af76337750b47a49ef581b7b113f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invulnerable: 0
+  health: 100
+  maxHealth: 100
+  damageFeedback:
+    enabled: 1
+    duration: 0.12
+    colour:
+      serializedVersion: 2
+      rgba: 4284769535
+    originalColour:
+      serializedVersion: 2
+      rgba: 4294967295
+    renderers:
+    - {fileID: 890574807196023238}
+    - {fileID: 890574807196023238}
+  hitEffectPrefab: {fileID: 0}
+  deathTime: 5
+  deathFadeTime: 1.89
 --- !u!114 &1920033574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,3 +303,7 @@ MonoBehaviour:
   attachedObjects:
   - {fileID: 0}
   collisionSound: {fileID: 8300000, guid: 2e8a8a697dc879747ac960673deac48f, type: 3}
+  damageThreshold: 5
+  velocityToDamageRatio: 0.7
+  baseDirection: -90
+  landingLeeway: 35

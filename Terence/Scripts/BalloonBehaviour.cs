@@ -96,6 +96,14 @@ public class BalloonBehaviour : MonoBehaviour {
     }
 
     void LineUpdate() {
+
+        // Disable the line renderer if the cargo is destroyed.
+        if(!cargo) {
+            lineRenderer.enabled = false;
+            joint.enabled = false;
+            return;
+        }
+
         Vector3 origin = transform.TransformPoint(joint.anchor),
                 goal = joint.connectedBody.transform.TransformPoint(joint.connectedAnchor);
 

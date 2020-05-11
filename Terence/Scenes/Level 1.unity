@@ -13387,8 +13387,8 @@ MonoBehaviour:
   startDelay: 1.5
   completionTimes:
   - 15
-  - 20
-  - 25
+  - 30
+  - 40
   player: {fileID: 440272791}
   goal: {fileID: 914431847}
   audio: {fileID: 0}
@@ -13399,6 +13399,7 @@ MonoBehaviour:
     objectivePointer: {fileID: 1622286463}
     objectivePointerNear: {fileID: 9217519374525826504, guid: 0e009cafff41a754a994245ea6e7f03f,
       type: 3}
+    healthSlider: {fileID: 7218588127102110374}
     screenMargin: {x: 50, y: 130}
 --- !u!82 &1131254684
 AudioSource:
@@ -13579,6 +13580,20 @@ PrefabInstance:
       propertyPath: attachedObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1019073819}
+    - target: {fileID: 1920033574, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
+      propertyPath: velocityToDamageRatio
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348270718864270651, guid: b68ec52eaed30094f9c44a4b97516ea5,
+        type: 3}
+      propertyPath: deathTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348270718864270651, guid: b68ec52eaed30094f9c44a4b97516ea5,
+        type: 3}
+      propertyPath: deathFadeTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
 --- !u!114 &1218486319 stripped
@@ -14280,5 +14295,32 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1813271022}
+    - target: {fileID: 3395769375849238495, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479466513324678258, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479466513324678258, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a162bbf94d4d64ab92bcb17a16720f, type: 3}
+--- !u!114 &7218588127102110374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6136587469048168131, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7218588127102110373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

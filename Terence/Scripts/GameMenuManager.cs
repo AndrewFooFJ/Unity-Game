@@ -16,7 +16,7 @@ public class GameMenuManager : MonoBehaviour {
 
     [Header("Menus")]
     public GameObject overlay;
-    public GameObject basicMenu, completeMenu;
+    public GameObject basicMenu, completeMenu, tutorialMenu;
     Transform stars;
 
     [Header("Resources")]
@@ -58,13 +58,13 @@ public class GameMenuManager : MonoBehaviour {
         StartCoroutine(Open(0f, menuType));
     }
 
-    public void Open(string menuType, float displayDelay, int stars = 3) {
+    public void Open(string menuType, float displayDelay, string description = "", int stars = 3) {
         overlay.SetActive(false); // Disables the overlay.
         gameObject.SetActive(true);
-        StartCoroutine(Open(displayDelay, menuType));
+        StartCoroutine(Open(displayDelay, menuType, description, stars));
     }
 
-    public IEnumerator Open(float displayDelay, string menuType, int stars = 3) {
+    public IEnumerator Open(float displayDelay, string menuType, string description = "", int stars = 3) {
         if(displayDelay > 0) yield return new WaitForSeconds(displayDelay);
 
         overlay.SetActive(true);
@@ -77,7 +77,7 @@ public class GameMenuManager : MonoBehaviour {
                 if(GameManager.instance.levelState == GameManager.LevelState.victory)
                     yield break;
 
-                Text basicMenuTitle = basicMenu.GetComponentInChildren<Text>();
+                Text basicMenuTitle = basicMenu.transform.Find("Title").GetComponent<Text>();
                 basicMenuTitle.text = menuType;
 
                 // Opens the basic menu.
@@ -90,6 +90,14 @@ public class GameMenuManager : MonoBehaviour {
 
                 if(stars > 0) StartCoroutine(SetStars(stars));
                 if(levelCompleteJingle) GameManager.instance.audio.PlayOneShot(levelCompleteJingle);
+                break;
+            case "Tutorial":
+
+                Text tutorialTitle = tutorialMenu.transform.Find("Title").GetComponent<Text>();
+                tutorialTitle.text = menuType;
+
+                Text tutorialDescription = tutorialMenu.transform.Find("Description").GetComponent<Text>();
+                tutorialDescription.text = description;
                 break;
         }
     }

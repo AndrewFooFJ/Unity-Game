@@ -69,8 +69,14 @@ public class GameCameraBehaviour : MonoBehaviour {
         if(!isFollowing) return;
 
         destination = Vector3.zero;
-        for(int i = 0; i < targets.Length; i++) destination += targets[i].position;
-        destination = (destination / targets.Length) + offset;
+        int total = 0;
+        for(int i = 0; i < targets.Length; i++) {
+            if(!targets[i]) continue;
+            destination += targets[i].position;
+            total++;
+        }
+        if(total <= 0) return; // If there are no valid targets, abort.
+        destination = (destination / total) + offset;
 
         // Move towards destination.
         switch(movementMode) {

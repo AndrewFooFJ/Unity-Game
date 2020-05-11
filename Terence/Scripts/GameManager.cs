@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
         public Text remainingTime, distanceToObjective;
         public Image objectivePointer;
         public Sprite objectivePointerNear;
+        public Slider healthSlider;
         public Vector2 screenMargin;
         internal Sprite objectivePointerSprite;
     }
@@ -82,7 +83,10 @@ public class GameManager : MonoBehaviour {
 
     void UpdateUI() {
         HUDElements.remainingTime.text = "Time: " + Mathf.Ceil(remainingTime);
-        HUDElements.distanceToObjective.text = Mathf.Ceil(Vector2.Distance(player.position, goal.position)).ToString();
+
+        // Don't run this if player is dead.
+        if(player)
+            HUDElements.distanceToObjective.text = Mathf.Ceil(Vector2.Distance(player.position, goal.position)).ToString();
 
         Vector3 screenPoint = camera.WorldToScreenPoint(goal.position);
 
@@ -113,6 +117,19 @@ public class GameManager : MonoBehaviour {
             ),
             0
         );
+    }
+
+    public void SetHealthBar(int value) {
+        if(HUDElements.healthSlider) {
+            HUDElements.healthSlider.value = value;
+
+            GameObject fillArea = HUDElements.healthSlider.transform.Find("Fill Area").gameObject;
+            if(value <= 0) {
+                if(fillArea.activeSelf) fillArea.SetActive(false);
+            } else {
+                if(!fillArea.activeSelf) fillArea.SetActive(true);
+            }
+        }
     }
 
     public void NotifyDefeat(float delay = 4f) {

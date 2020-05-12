@@ -35,11 +35,14 @@ public class GameManager : MonoBehaviour {
     public enum LevelState { preGame, inGame, victory, defeat }
     public LevelState levelState { get; protected set; } = LevelState.preGame;
 
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         if(instance) Debug.LogWarning("More than 1 GameManager in the scene!", gameObject);
         else instance = this;
+    }
 
+    // Start is called before the first frame update
+    void Start() {
+        
         remainingTime = completionTimes[2];
         camera = cameraBehaviour.GetComponent<Camera>();
         audio = cameraBehaviour.GetComponent<AudioSource>() ?? GetComponent<AudioSource>();

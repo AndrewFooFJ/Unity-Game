@@ -70,6 +70,10 @@ public class GameMenuManager : MonoBehaviour {
         overlay.SetActive(true);
         OnEnable();
 
+        if(basicMenu) basicMenu.SetActive(false);
+        if(completeMenu) completeMenu.SetActive(false);
+        if(tutorialMenu) tutorialMenu.SetActive(false);
+
         switch(menuType) {
             case "Paused":
             case "Game Over":
@@ -82,16 +86,15 @@ public class GameMenuManager : MonoBehaviour {
 
                 // Opens the basic menu.
                 if(basicMenu) basicMenu.SetActive(true);
-                if(completeMenu) completeMenu.SetActive(false);
                 break;
             case "Level Complete":
-                if(basicMenu) basicMenu.SetActive(false);
                 if(completeMenu) completeMenu.SetActive(true);
 
                 if(stars > 0) StartCoroutine(SetStars(stars));
                 if(levelCompleteJingle) GameManager.instance.audio.PlayOneShot(levelCompleteJingle);
                 break;
             case "Tutorial":
+                if(tutorialMenu) tutorialMenu.SetActive(true);
 
                 Text tutorialTitle = tutorialMenu.transform.Find("Title").GetComponent<Text>();
                 tutorialTitle.text = menuType;
@@ -119,10 +122,14 @@ public class GameMenuManager : MonoBehaviour {
 
     void OnEnable() {
         if(overlay && overlay.activeSelf) Time.timeScale = 0f;
+        if(GameManager.instance)
+            GameManager.instance.HUDElements.HUD.SetActive(false);
     }
 
     void OnDisable() {
         Time.timeScale = 1f;
+        if(GameManager.instance)
+            GameManager.instance.HUDElements.HUD.SetActive(true);
     }
 
     // Saves an instance to a static variable.

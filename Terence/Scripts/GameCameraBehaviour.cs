@@ -23,21 +23,22 @@ public class GameCameraBehaviour : MonoBehaviour {
     [Header("UI")]
     public Canvas canvas;
     public float fadeDuration = 3f;
-    Image fader;
 
     // Start is called before the first frame update
     void Start() {
-        Fade(Color.black, "In", fadeDuration);
+        StartCoroutine(Fade(Color.black, "In", fadeDuration));
     }
 
-    void Fade(Color fadeColor, string direction = "In", float duration = 2f) {
+    IEnumerator Fade(Color fadeColor, string direction = "In", float duration = 2f) {
 
-        if(!fader) {
-            // If there is no canvas, don't bother drawing.
-            if(!canvas) {
-                Debug.LogWarning("No canvas to draw the fade effect on.", this);
-                return;
-            }
+        // If there is no canvas, don't bother drawing.
+        if(!canvas) {
+            Debug.LogWarning("No canvas to draw the fade effect on.", this);
+            yield break;
+        }
+
+        // If there is already a fade effect, abort.
+        if(!canvas.transform.Find("Camera Fader")) {
 
             // Create a new GameObject and attach it to the canvas.
             GameObject go = new GameObject("Camera Fader");
@@ -47,20 +48,30 @@ public class GameCameraBehaviour : MonoBehaviour {
             rect.anchorMin = Vector2.zero;
             rect.anchorMax = new Vector2(1,1);
             rect.anchoredPosition = rect.sizeDelta = Vector3.zero;
-            fader = go.AddComponent<Image>();
+            Image fader = go.AddComponent<Image>();
             fader.fillAmount = 1f;
-        }
-        
-        fader.color = fadeColor; // Assign fader color.
 
-        // Use cross fade alpha to fade.
-        switch(direction) {
-            case "In": default:
-                fader.CrossFadeAlpha(0f,duration,true);
-                break;
-            case "Out":
-                fader.CrossFadeAlpha(1f,duration,true);
-                break;
+            fader.color = fadeColor; // Assign fader color.
+
+            // Use cross fade alpha to fade.
+            WaitForEndOfFrame w = new WaitForEndOfFrame();
+            float time = 0f;
+            switch(direction) {
+                case "In": default:
+                    do {
+                        yield return w;
+                        time += Time.deltaTime;
+                        fader.color = new Color(fader.color.r, fader.color.g, fader.color.b, 1 - time/duration);
+                    } while(time < duration);
+                    break;
+                case "Out":
+                    do {
+                        yield return w;
+                        time += Time.deltaTime;
+                        fader.color = new Color(fader.color.r, fader.color.g, fader.color.b, time/duration);
+                    } while(time < duration);
+                    break;
+            }
         }
     }
 

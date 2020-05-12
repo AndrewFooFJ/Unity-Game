@@ -444,7 +444,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.03
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -536,7 +536,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 395f027882427e441ad58d5c94b98679, type: 3}
   pullDirectionUI:
     baseColor: {r: 1, g: 1, b: 1, a: 1}
-    upColor: {r: 0, g: 1, b: 0, a: 1}
+    upColor: {r: 0, g: 0.8490566, b: 0, a: 1}
     downColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!82 &723651790
 AudioSource:

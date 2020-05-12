@@ -92,7 +92,7 @@ public class BalloonBehaviour : MonoBehaviour {
 
         UpdateVolume();
 
-        HandleInput();
+        //HandleInput();
     }
 
     void LineUpdate() {
@@ -185,6 +185,41 @@ public class BalloonBehaviour : MonoBehaviour {
                 }
             }
         };
+    }
+
+    // For enabling / disabling inflation on balloon.
+    public void Inflate(bool b) {
+        if(b) {
+            switch(controlMode) {
+                case Mode.boost:
+                    isInflating = false;
+                    StartCoroutine(Boost(boostVolume));
+                    break;
+                case Mode.gradual:
+                    isInflating = true;
+
+                    // Play the inflating sound effect.
+                    if(!audio.isPlaying && inflatingSound.Length > 0) {
+                        audio.clip = inflatingSound[Random.Range(0,inflatingSound.Length)];
+                        audio.loop = true;
+                        audio.Play();
+                    }
+                    break;
+            }
+        } else {
+            // Left click up.
+            switch(controlMode) {
+                case Mode.gradual:
+                    isInflating = false;
+                    break;
+            }
+
+            // Stop playing any audio on the balloon.
+            if(inflatingSound.Contains(audio.clip) && audio.isPlaying) {
+                audio.loop = false;
+                audio.Stop();
+            }
+        }
     }
 
     void HandleInput() {
@@ -288,6 +323,9 @@ public class BalloonBehaviour : MonoBehaviour {
         audio.Stop();
 
         isDead = true;
+
+        // Remove itself from the cargo list, if it has a cargo.
+        if(cargo) cargo.attachedObjects.Remove(this);
 
         // Play death sounds and particle effects.
         if(popSound.Length > 0) {

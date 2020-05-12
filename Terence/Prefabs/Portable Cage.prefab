@@ -286,8 +286,8 @@ MonoBehaviour:
     - {fileID: 890574807196023238}
     - {fileID: 890574807196023238}
   hitEffectPrefab: {fileID: 0}
-  deathTime: 5
-  deathFadeTime: 1.89
+  deathTime: 1
+  deathFadeTime: 1
 --- !u!114 &1920033574
 MonoBehaviour:
   m_ObjectHideFlags: 0

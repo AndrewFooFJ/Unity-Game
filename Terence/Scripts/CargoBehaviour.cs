@@ -8,7 +8,7 @@ public class CargoBehaviour : MonoBehaviour {
     public List<BalloonBehaviour> attachedObjects;
     public AudioClip collisionSound;
 
-    [Header("Health & Damage")]
+    [Header("Damage")]
     public int damageThreshold = 1;
     public float velocityToDamageRatio = 2f; // Threshold at which we will take damage from a collision.
     BasicUnit unit; // Component for handling health.
@@ -28,11 +28,6 @@ public class CargoBehaviour : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody2D>();
         unit = GetComponent<BasicUnit>();
         unit.onDeath += OnDeath;
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
     }
 
     void FixedUpdate() {

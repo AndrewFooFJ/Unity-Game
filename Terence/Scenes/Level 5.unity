@@ -230,6 +230,18 @@ Transform:
   m_Father: {fileID: 1381633200}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &183527818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6136587469048168131, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7218588127102110373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &229183587 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7218588127146744518, guid: d1a162bbf94d4d64ab92bcb17a16720f,
@@ -21530,6 +21542,7 @@ GameObject:
   - component: {fileID: 1131254682}
   - component: {fileID: 1131254683}
   - component: {fileID: 1131254684}
+  - component: {fileID: 1131254685}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -21675,6 +21688,7 @@ MonoBehaviour:
     objectivePointer: {fileID: 1622286463}
     objectivePointerNear: {fileID: 9217519374525826504, guid: 0e009cafff41a754a994245ea6e7f03f,
       type: 3}
+    healthSlider: {fileID: 183527818}
     screenMargin: {x: 50, y: 130}
 --- !u!82 &1131254684
 AudioSource:
@@ -21772,6 +21786,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1131254685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131254678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd43a93e2ccf7449adc4b8a33cf7d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 1131254680}
+  doubleClickThreshold: 0.3
 --- !u!114 &1134810171 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7218588125971734174, guid: d1a162bbf94d4d64ab92bcb17a16720f,
@@ -24830,5 +24858,15 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1813271022}
+    - target: {fileID: 4479466513324678258, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479466513324678258, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a162bbf94d4d64ab92bcb17a16720f, type: 3}

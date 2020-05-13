@@ -91,7 +91,6 @@ public class CargoBehaviour : MonoBehaviour {
         // Pop the object.
         if(index > -1) {
             attachedObjects[index].Death();
-            attachedObjects.RemoveAt(index);
         }  else {
             for(int i=0; i < attachedObjects.Count; i++) {
                 attachedObjects[i].Death();

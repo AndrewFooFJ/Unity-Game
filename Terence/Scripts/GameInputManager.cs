@@ -42,7 +42,8 @@ public class GameInputManager : MonoBehaviour {
 
             // Perform different actions depending on whether we have a double click.
             if(HasDoubleClick() && lastControlledItem == balloon) {
-                balloon.Death();
+                if(balloon.cargo) balloon.cargo.Pop(balloon);
+                else balloon.Death();
             } else {
                 balloon.Inflate(true);
                 lastControlledItem = balloon;
@@ -53,8 +54,8 @@ public class GameInputManager : MonoBehaviour {
                 clicks[clicks.Count - 1].isActive = false;
 
             // Orders the balloon to stop inflating.
-            balloon.Inflate(false);
-            lastControlledItem = balloon;
+            if(lastControlledItem)
+                lastControlledItem.Inflate(false);
         }
 
         // Update the current click duration if any.
@@ -74,6 +75,10 @@ public class GameInputManager : MonoBehaviour {
         float minDist = float.MaxValue;
         int selectedItem = -1;
         for(int i = 0; i<controlledItems.Length; i++) {
+
+            // If the balloon is no longer there, disregard.
+            if(!controlledItems[i]) continue;
+
             float dist = Vector2.Distance(position,controlledItems[i].transform.position);
             if(dist < minDist) {
                 minDist = dist;

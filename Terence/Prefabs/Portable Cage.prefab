@@ -304,6 +304,6 @@ MonoBehaviour:
   - {fileID: 0}
   collisionSound: {fileID: 8300000, guid: 2e8a8a697dc879747ac960673deac48f, type: 3}
   damageThreshold: 5
-  velocityToDamageRatio: 0.7
+  velocityToDamageRatio: 0.8
   baseDirection: -90
   landingLeeway: 35

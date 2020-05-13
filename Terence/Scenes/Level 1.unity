@@ -937,6 +937,39 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 1
+--- !u!1 &804040260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804040261}
+  m_Layer: 0
+  m_Name: Tutorials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804040261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804040260}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2026193799}
+  - {fileID: 1806086445}
+  - {fileID: 1482353713}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839203258
 GameObject:
   m_ObjectHideFlags: 0
@@ -8385,18 +8418,6 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 1
---- !u!114 &1019073819 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3036618062249276115, guid: 87f74566e05df254a8889b575c15a967,
-    type: 3}
-  m_PrefabInstance: {fileID: 593731224}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a43c91e6c42c56746b930ac8f1e0d3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1057765989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 450940587126521329, guid: 8d3fa7dcbe93ac540be0d9700fd0b15b,
@@ -8674,7 +8695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 1131254680}
-  doubleClickThreshold: 0.2
+  doubleClickThreshold: 0.3
 --- !u!114 &1134810171 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7218588125971734174, guid: d1a162bbf94d4d64ab92bcb17a16720f,
@@ -8757,29 +8778,7 @@ PrefabInstance:
     - target: {fileID: 1920033574, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
       propertyPath: attachedObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 1019073819}
-    - target: {fileID: 1920033574, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
-      propertyPath: velocityToDamageRatio
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920033574, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348270718864270651, guid: b68ec52eaed30094f9c44a4b97516ea5,
-        type: 3}
-      propertyPath: deathTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348270718864270651, guid: b68ec52eaed30094f9c44a4b97516ea5,
-        type: 3}
-      propertyPath: deathFadeTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920033572, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1400545292}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68ec52eaed30094f9c44a4b97516ea5, type: 3}
 --- !u!60 &1158971473 stripped
@@ -8873,6 +8872,98 @@ MonoBehaviour:
   force: 4
   affectedZones:
   - {fileID: 1291593554}
+--- !u!114 &1400545292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3036618062249276115, guid: 87f74566e05df254a8889b575c15a967,
+    type: 3}
+  m_PrefabInstance: {fileID: 593731224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43c91e6c42c56746b930ac8f1e0d3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1482353712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482353713}
+  - component: {fileID: 1482353715}
+  - component: {fileID: 1482353714}
+  m_Layer: 0
+  m_Name: Tutorial Trigger 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1482353713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482353712}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.5, y: 1.31, z: -0.8027344}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 804040261}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1482353714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482353712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f899cb2cf618c5f4cb50c027477206a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 593731225}
+  - {fileID: 1158971473}
+  triggerCount: 1
+  messages:
+  - menuType: Tutorial
+    description: Double-click on the balloon to pop it and drop your cargo near the
+      destination. Avoid dropping it from too high up!
+    stars: 0
+    popDelay: 0.25
+--- !u!61 &1482353715
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482353712}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 4.48}
+  m_EdgeRadius: 0
 --- !u!1 &1522933546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8929,6 +9020,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1806086444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1806086445}
+  - component: {fileID: 1806086447}
+  - component: {fileID: 1806086446}
+  m_Layer: 0
+  m_Name: Tutorial Trigger 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1806086445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806086444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.36, y: 3.24, z: -0.8027344}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 804040261}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806086446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806086444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f899cb2cf618c5f4cb50c027477206a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 593731225}
+  - {fileID: 1158971473}
+  triggerCount: 1
+  messages:
+  - menuType: Tutorial
+    description: Ride the air current to move towards your destination.
+    stars: 0
+    popDelay: 0.25
+--- !u!61 &1806086447
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806086444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 2.33}
+  m_EdgeRadius: 0
 --- !u!114 &1813271022 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1036128613552342590, guid: 03798e8893e5630418a97334cf8c15fe,
@@ -9015,13 +9185,13 @@ MonoBehaviour:
   triggerCount: 1
   messages:
   - menuType: Tutorial
-    description: Click or tap on the balloon to inflate it.
+    description: Click or tap on the balloon to inflate it and lift your cargo.
     stars: 0
-    popDelay: 5
+    popDelay: 3.5
   - menuType: Tutorial
-    description: Do not over-inflate the balloon. It will pop!
+    description: Take care to not over-inflate the balloon. It will pop!
     stars: 0
-    popDelay: 2
+    popDelay: 0.25
 --- !u!61 &2026193798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9055,12 +9225,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026193796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.86, y: 0.08, z: -0.8027344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 804040261}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1036128615365056464
 PrefabInstance:
@@ -9073,6 +9243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameMenus
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036128613552342585, guid: 03798e8893e5630418a97334cf8c15fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1036128613552342589, guid: 03798e8893e5630418a97334cf8c15fe,
         type: 3}
@@ -9253,6 +9428,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5000370343715976476, guid: d29e5c7bc4e24b541bc63079bf6131a8,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29e5c7bc4e24b541bc63079bf6131a8, type: 3}
 --- !u!1001 &6761883380152189432
@@ -9395,6 +9575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameHUDCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218588126531702244, guid: d1a162bbf94d4d64ab92bcb17a16720f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7218588126531702243, guid: d1a162bbf94d4d64ab92bcb17a16720f,
         type: 3}

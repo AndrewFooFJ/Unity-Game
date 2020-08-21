@@ -289,7 +289,7 @@ public class LevelManager : MonoBehaviour
         } else
         {
             //watch Ad
-            theAdsController.PlayRewardedVideo();
+            theAdsController.PlayRewardedAd();
         }
     }
 

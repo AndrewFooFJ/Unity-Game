@@ -8,7 +8,7 @@ public class InGamePurchases : MonoBehaviour
 
     public void WatchAdFor2Lives()
     {
-        FindObjectOfType<AdController>().PlayRewardedVideo();
+        FindObjectOfType<AdController>().PlayRewardedAd();
     }
 
     public void BuyLives10()

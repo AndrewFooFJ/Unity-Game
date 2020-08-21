@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.Analytics;
 
 public class AdController : MonoBehaviour
 {
-    string gameId = "3500697";
+    string gameId = "3779927";
     string rewardedVideoId = "rewardedVideo";
 
     // Start is called before the first frame update
@@ -14,9 +15,10 @@ public class AdController : MonoBehaviour
     {
         //if game is released, put it to false
         Advertisement.Initialize(gameId, true);   
+
     }
 
-    public void PlayRewardedVideo()
+    public void PlayRewardedAd()
     {
         //is the rewarded video ad ready to be played
         if (Advertisement.IsReady(rewardedVideoId))
@@ -24,6 +26,13 @@ public class AdController : MonoBehaviour
             Advertisement.Show(rewardedVideoId);
             //InGamePurchases.inGameCurrency += 10;
             LevelManager.liveCount += 2;
+        }
+    }
+
+    public void PlaySimpleAd() {
+        // Check if UnityAds ready before calling Show method:
+        if (Advertisement.IsReady()) {
+            Advertisement.Show();
         }
     }
 }
